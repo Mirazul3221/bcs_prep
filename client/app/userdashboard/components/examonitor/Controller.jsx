@@ -15,7 +15,7 @@ import PaginationNumber from "./PaginationNumber";
 // import correct from "../mediaresource/music_button/right.mp3";
 // import wrong from "../mediaresource/music_button/error.mp3";
 
-const Controller = ({ getLocalVal, getRobot, questionsData }) => {
+const Controller = ({ getLocalVal, getRobot, questionsData,grid }) => {
   //=================setPagination system=================
   // const [currentPage, setCurrentPage] = useState(1);
   // const [itemsPerPage, setItemsPerPage] = useState(20);
@@ -189,7 +189,7 @@ const Controller = ({ getLocalVal, getRobot, questionsData }) => {
         </h2>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-4">
+      <div className={`grid md:grid-cols-${+grid} gap-4`}>
         {/* =============================================
               ==================Justify Answer=============
               ============================================= */}
