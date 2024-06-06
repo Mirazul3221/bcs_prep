@@ -10,7 +10,7 @@ const Monitor = ({ questions }) => {
   const [navigate, setNavigate] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(20);
-  const [grid,setGrid] = useState(2)
+  const [grid,setGrid] = useState(3)
   const [val, setVal] = useState(false);
   const [random, setRandom] = useState(false);
   const [localData, setLocalData] = useState();
@@ -81,10 +81,10 @@ const Monitor = ({ questions }) => {
               <div>
                 <select onChange={(e)=>setGrid(e.target.value)} className="py-[10px] hidden md:inline-block px-4 border rounded-full" name="grid_ctrl" id="ctrl">
                   <option value="">--grid control--</option>
-                  <option value="0">1</option>
-                  <option value="1">2</option>
-                  <option value="2">3</option>
-                  <option value="3">4</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
                 </select>
                 <select onChange={(e)=>setItemsPerPage(e.target.value)} className="py-[10px] px-4 border rounded-full" name="item-per-page" id="ctrl-item">
                   <option value="">--item--</option>

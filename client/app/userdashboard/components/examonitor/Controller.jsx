@@ -188,7 +188,7 @@ const Controller = ({ getLocalVal, getRobot, questionsData,grid }) => {
         </h2>
       </div>
 
-      <div className={`grid md:grid-cols-${+grid+1} gap-4`}>
+      <div className={`grid ${grid ==1 ? "md:grid-cols-1" : grid == 2 ? "md:grid-cols-2" : grid == 3 ? "md:grid-cols-3" :  grid == 4 ? "md:grid-cols-4" : ""} gap-4`}>
         {/* =============================================
               ==================Justify Answer=============
               ============================================= */}
