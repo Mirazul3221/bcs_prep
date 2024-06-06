@@ -31,14 +31,14 @@ try {
       <div className="flex flex-col items-center relative group">
         {imageUrl.length > 0 ? (
           <img
-            className="w-[115px] h-[115px] md:w-[180px] border-4 md:h-[180px] rounded-full"
+            className="md:w-[170px] md:h-[170px] w-[100px] h-[100px] border-4 rounded-full"
             src={imageUrl}
             alt="profile-image"
           />
         ) : (
           <>
             {profile?.length > 0 ? (
-             <div className="flex justify-center items-center"> <img className="w-20 h-20 md:w-48 md:h-48 rounded-full mx-auto" src={profile} alt="profile-picture" /></div>
+             <img className="md:w-[170px] md:h-[170px] w-[100px] h-[100px] rounded-full border-4 mx-auto" src={profile} alt="profile-picture" />
             ) : (
               <div
                 role="status"
@@ -61,7 +61,7 @@ try {
         )}
         <label
           htmlFor="imageUpload"
-          className="absolute w-full h-full rounded-full bg-black/50 duration-100 cursor-pointer flex justify-center items-center scale-0 group-hover:scale-100"
+          className="absolute md:w-[170px] md:h-[170px] w-[100px] h-[100px] rounded-full bg-black/50 duration-100 cursor-pointer flex justify-center items-center scale-0 group-hover:scale-100"
         >
           <ImCamera color="white" size={50} />
         </label>

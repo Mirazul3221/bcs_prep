@@ -6,6 +6,7 @@ import axios from "axios";
 import storeContext from "@/app/global/createContex";
 import { PiPenLight } from "react-icons/pi";
 import { baseurl } from "@/app/config";
+import Logo from "@/app/components/Logo";
 
 
 const Page = () => {
@@ -63,9 +64,12 @@ useEffect(() => {
 }, []);
 
   return (
-    <div className="">
+    <div className="md:px-10 px-4 mt">
+      <div className="flex justify-between items-center my-4">
+        <Logo w={100}/>
       <Navbar />
-      <div className="md:w-4/12 border-t-4 rounded-lg border-blue-600 ml-2 shadow-md p-10">
+      </div>
+      <div className="md:w-4/12 border-t-4 rounded-lg border-fuchsia-500 ml-2 shadow-md p-10">
         <div className="w-1/2 mx-auto py-2">
           <Profile profile={userDetails.profile} />
           <h1 className="text-center text-2xl font-semibold">
@@ -91,7 +95,7 @@ useEffect(() => {
                 <h2
                   className={`updateTitle ${
                     userDetails.title?.length <= 30
-                      ? "text-center text-green-500"
+                      ? "text-center text-fuchsia-500"
                       : "text-rose-500"
                   } `}
                 >
@@ -142,7 +146,6 @@ useEffect(() => {
           )}
         </div>
       </div>
-      <div onClick={updateUser} className="">click</div>
     </div>
   );
 };

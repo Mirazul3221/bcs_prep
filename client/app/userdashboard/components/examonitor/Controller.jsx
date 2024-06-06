@@ -319,9 +319,9 @@ const Controller = ({ getLocalVal, getRobot, questionsData,grid }) => {
                 <></>
               ) : (
                 <div
-                  className={`explanation relative hidden_scroll pt-2 mt-4 px-4 transform duration-500 bg-white max-h-[40vh] overflow-y-scroll`}
+                  className={`explanation relative hidden_scroll pt-2 mt-4 px-4 md:px-12 transform duration-500 bg-white max-h-[40vh] overflow-y-scroll`}
                 >
-                  <p className="text-[12px]">
+                  <p className="text-[12px] p-2 md:p-10">
                     {HTMLReactParser(value.description)}
                   </p>
                 </div>
@@ -329,13 +329,13 @@ const Controller = ({ getLocalVal, getRobot, questionsData,grid }) => {
 
               {value.description.length > 0 ? (
                 <div
-                  className={`explanation relative hidden_scroll pt-2 hidden mt-4 px-4 transform scale-0 duration-500 bg-white max-h-[40vh] overflow-y-scroll`}
+                  className={`explanation relative hidden_scroll pt-2 hidden mt-4 px-4 md:px-12 transform scale-0 duration-500 bg-white max-h-[40vh] overflow-y-scroll`}
                 >
                   <div
                     onClick={(e) => {
                       removeExp(e);
                     }}
-                    className="fixed cursor-pointer w-4 h-4 top-2 right-2 flex justify-center items-center rounded-full bg-rose-300/50"
+                    className="fixed cursor-pointer w-4 h-4 top-2 right-2 md:right-8 flex justify-center items-center rounded-full bg-rose-300/50"
                   >
                     <RxCross2 color="red" size={10} />
                   </div>

@@ -2,18 +2,15 @@
 import { useRouter } from "next/navigation";
 import React from "react";
 
-const Navbar = ({ value, setValue }) => {
+const Navbar = () => {
   const route = useRouter();
   const logout = () => {
     localStorage.removeItem("token");
     route.push("/login");
   };
   return (
-    <div>
+    <div className="flex gap-4 items-center">
       <ul className="md:w-full md:flex hidden justify-center py-4">
-        <li onClick={() => setValue("About Us")} className="text-lg font-normal px-4 py-[4px] hover:bg-slate-100 hover:border-gray-200 text-gray-700 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-white">
-          About Us
-        </li>
         {/* <li className="text-lg font-normal px-4 py-[4px] hover:bg-slate-100 hover:border-gray-200 text-gray-700 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-white">
           Our Team
         </li> */}
@@ -24,10 +21,7 @@ const Navbar = ({ value, setValue }) => {
           Blogs
         </li> */}
         <li
-          onClick={() => setValue("BCS corner")}
-          className={`text-lg font-normal px-4 py-[4px] ${
-            value === "BCS corner" ? "border-gray-200 bg-slate-100" : ""
-          } hover:bg-slate-100 hover:border-gray-200 text-gray-700 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-white`}>
+          className={`text-lg font-normal px-4 py-[4px]  hover:bg-slate-100 text-gray-700 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-white`}>
           BCS corner
         </li>
         <li className="text-lg font-normal px-4 py-[4px] hover:bg-slate-100 hover:border-gray-200 text-gray-700 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-white">

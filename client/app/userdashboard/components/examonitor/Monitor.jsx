@@ -10,7 +10,7 @@ const Monitor = ({ questions }) => {
   const [navigate, setNavigate] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(20);
-  const [grid,setGrid] = useState(3)
+  const [grid, setGrid] = useState(3);
   const [val, setVal] = useState(false);
   const [random, setRandom] = useState(false);
   const [localData, setLocalData] = useState();
@@ -32,11 +32,11 @@ const Monitor = ({ questions }) => {
   const devidedQuestions = devider(questions, +itemsPerPage);
 
   ///===================================================
-  const isBrowser = () => typeof window !== 'undefined'; //The approach recommended by Next.js
+  const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
 
   function scrollToTop() {
-      if (!isBrowser()) return;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (!isBrowser()) return;
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
   //=========================================
   //============grid control system==============
@@ -78,23 +78,39 @@ const Monitor = ({ questions }) => {
                 </div>
               </div>
               <div className="md:flex gap-4 justify-center items-center">
-              <div>
-                <select onChange={(e)=>setGrid(e.target.value)} className="py-[10px] hidden md:inline-block px-4 border rounded-full" name="grid_ctrl" id="ctrl">
-                  <option value="">--grid control--</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                </select>
-                <select onChange={(e)=>setItemsPerPage(e.target.value)} className="py-[10px] px-4 border rounded-full" name="item-per-page" id="ctrl-item">
-                  <option value="">--item--</option>
-                  <option value="10">10</option>
-                  <option value="15">15</option>
-                  <option value="20">20</option>
-                  <option value="30">30</option>
-                  <option value="40">40</option>
-                </select>
-              </div>
+                <div>
+                  <select
+                    onChange={(e) => setGrid(e.target.value)}
+                    className="py-[10px] hidden md:inline-block px-4 border rounded-full"
+                    name="grid_ctrl"
+                    id="ctrl"
+                  >
+                    <option value="">--grid control--</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                  </select>
+                  <select
+                    onChange={(e) => setItemsPerPage(e.target.value)}
+                    className="py-[10px] px-4 border rounded-full"
+                    name="item-per-page"
+                    id="ctrl-item"
+                  >
+                    <option value="">--item--</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                  </select>
+                  <select class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+                    <option selected="">Open this select menu</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                  </select>
+                </div>
                 <div className="flex gap-2">
                   <div className="mail flex justify-center">
                     <>
@@ -124,19 +140,21 @@ const Monitor = ({ questions }) => {
               </div>
             </div>
             <div>
-              <div
-                className={`flex`}
-              >
+              <div className={`flex`}>
                 {devidedQuestions.question.map((item, i) => {
                   return (
-                    <div key={i} className={`${i+1 === currentPage ? "visible" : "hidden"}`}>
-
-                        <Controller
-                          getLocalVal={getLocalVal}
-                          getRobot={getRobot}
-                          questionsData={item}
-                          grid={grid}
-                        />
+                    <div
+                      key={i}
+                      className={`${
+                        i + 1 === currentPage ? "visible" : "hidden"
+                      }`}
+                    >
+                      <Controller
+                        getLocalVal={getLocalVal}
+                        getRobot={getRobot}
+                        questionsData={item}
+                        grid={grid}
+                      />
                     </div>
                   );
                 })}

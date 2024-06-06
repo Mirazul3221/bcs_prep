@@ -56,7 +56,8 @@ export class AuthService {
       const token = await this.jwtService.sign({
         id: (await loginInfo).id,
         name: (await loginInfo).name,
-        role:(await loginInfo).role
+        role:(await loginInfo).role,
+        profile:await loginInfo.profile
       });
       return { token, message: 'User login success' };
      } else {
