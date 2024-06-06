@@ -188,7 +188,7 @@ const Controller = ({ getLocalVal, getRobot, questionsData,grid }) => {
         </h2>
       </div>
 
-      <div className={`grid md:grid-cols-${grid} gap-4`}>
+      <div className={`grid md:grid-cols-${grid.toString()} gap-4`}>
         {/* =============================================
               ==================Justify Answer=============
               ============================================= */}
