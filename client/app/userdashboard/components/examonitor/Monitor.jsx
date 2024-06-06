@@ -10,7 +10,7 @@ const Monitor = ({ questions }) => {
   const [navigate, setNavigate] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(20);
-  const [grid,setGrid] = useState(3)
+  const [grid,setGrid] = useState(2)
   const [val, setVal] = useState(false);
   const [random, setRandom] = useState(false);
   const [localData, setLocalData] = useState();
