@@ -30,7 +30,6 @@ const Monitor = ({ questions }) => {
   };
 
   const devidedQuestions = devider(questions, +itemsPerPage);
-console.log(grid,itemsPerPage)
 
   ///===================================================
   const isBrowser = () => typeof window !== 'undefined'; //The approach recommended by Next.js

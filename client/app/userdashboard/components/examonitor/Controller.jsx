@@ -175,7 +175,6 @@ const Controller = ({ getLocalVal, getRobot, questionsData,grid }) => {
   // const obj = { name: "mirazul", age: 10 };
   // localStorage.setItem("obj", JSON.stringify(obj));
   // const getObj = JSON.parse(localStorage.getItem("obj"));
-  // console.log(getObj);
   return (
     <div className="pb-12 md:pb-0">
       <div className="flex items-center ml-6 md:ml-0 gap-2 text-gray-700">
@@ -189,7 +188,8 @@ const Controller = ({ getLocalVal, getRobot, questionsData,grid }) => {
         </h2>
       </div>
 
-      <div className={`grid md:grid-cols-${+grid} gap-4`}>
+      <div className={`grid md:grid-cols-${grid} gap-4`}>
+        {grid}
         {/* =============================================
               ==================Justify Answer=============
               ============================================= */}
