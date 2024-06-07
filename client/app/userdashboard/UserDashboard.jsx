@@ -38,7 +38,6 @@ const UserDashboard = () => {
   // };
 
   // console.log(filterValue('বাঙালি জাতি'))
-  console.log(store);
   return (
     <div className="px-10 md:py-4 pt-4">
       <ProtectRoute>

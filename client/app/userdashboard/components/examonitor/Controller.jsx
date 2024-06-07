@@ -181,7 +181,7 @@ const Controller = ({ getLocalVal, getRobot, questionsData,grid }) => {
         <FaBookReader size={20} />
         <h2 className="my-2 text-[11px] md:text-lg">
           এই পর্যন্ত আপনি (
-          <span className="text-green-500 font-bold">
+          <span className="font-bold text-fuchsia-500">
             {" " + countReadingQuestion + " "}
           </span>
           ) টি প্রশ্ন পড়ছেন।

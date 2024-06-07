@@ -50,7 +50,7 @@ const Monitor = ({ questions }) => {
           <div>
             <div className="flex justify-between items-center responsive_title my-2 mt-3">
               <div className="flex gap-2 main_box">
-                <div className="mail flex justify-center">
+                <div className="mail md:flex justify-center hidden">
                   <div className="sub narrow_btn flex justify-center items-center gap-2 w-fit px-2 md:px-4 py-2 bg-gray-200 rounded-full">
                     <p className="text-[12px] md:text-[16px] font-medium ">
                       Set Random
@@ -58,7 +58,7 @@ const Monitor = ({ questions }) => {
                     <div
                       onClick={handleClick}
                       className={`md:w-6 w-4 h-4 cursor-pointer md:h-6 ${
-                        getLocalVal === "true" ? "bg-green-300" : "bg-white"
+                        getLocalVal === "true" ? "bg-fuchsia-500" : "bg-white"
                       } rounded-full`}
                     ></div>
                   </div>
@@ -71,21 +71,21 @@ const Monitor = ({ questions }) => {
                     <div
                       onClick={handleClickForRobot}
                       className={`md:w-6 w-4 h-4 cursor-pointer md:h-6 ${
-                        getRobot === "on" ? "bg-green-300" : "bg-white"
+                        getRobot === "on" ? "bg-fuchsia-500" : "bg-white"
                       } rounded-full`}
                     ></div>
                   </div>
                 </div>
               </div>
-              <div className="md:flex gap-4 justify-center items-center">
-                <div>
+              <div className="flex gap-3 md:gap-4 justify-center items-center">
+                <div className="flex md:gap-2 items-center">
                   <select
                     onChange={(e) => setGrid(e.target.value)}
-                    className="py-[10px] hidden md:inline-block px-4 border rounded-full"
+                    className="py-[10px] hidden md:inline-block px-4 border rounded-full bg-gray-100"
                     name="grid_ctrl"
                     id="ctrl"
                   >
-                    <option value="">--grid control--</option>
+                    <option value="">Show grid</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -94,22 +94,16 @@ const Monitor = ({ questions }) => {
                   </select>
                   <select
                     onChange={(e) => setItemsPerPage(e.target.value)}
-                    className="py-[10px] px-4 border rounded-full"
+                    className="md:py-[10px] py-[7px] text-sm md:px-4 border rounded-full bg-gray-100"
                     name="item-per-page"
                     id="ctrl-item"
                   >
-                    <option value="">--item--</option>
+                    <option value="">Show items</option>
                     <option value="10">10</option>
                     <option value="15">15</option>
                     <option value="20">20</option>
                     <option value="30">30</option>
                     <option value="40">40</option>
-                  </select>
-                  <select class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
-                    <option selected="">Open this select menu</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
                   </select>
                 </div>
                 <div className="flex gap-2">
@@ -120,7 +114,7 @@ const Monitor = ({ questions }) => {
                           getRobot === "on"
                             ? "transform scale-110 duration-500"
                             : "transform scale-0 duration-500"
-                        } justify-center items-center gap-2 w-fit px-2 md:px-4 py-2 bg-gray-200 rounded-full`}
+                        } justify-center items-center gap-2 w-fit px-2 md:px-4 py-2 bg-gray-100 rounded-full`}
                       >
                         <p className="text-[12px] md:text-[16px] font-medium">
                           Get Start
@@ -130,7 +124,7 @@ const Monitor = ({ questions }) => {
                           onClick={() => setNavigate(true)}
                           className={`md:w-5 w-4 h-4 cursor-pointer md:h-5 bounce_btn ${
                             getRobot === "on"
-                              ? "animate-ping bg-green-500"
+                              ? "animate-ping bg-fuchsia-500"
                               : "bg-white"
                           } rounded-full`}
                         ></div>
