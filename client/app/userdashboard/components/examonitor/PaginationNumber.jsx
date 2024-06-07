@@ -10,6 +10,8 @@ const PaginationNumber = ({ totalPost, postPerPage, getPageNumber,scrollToTop })
     getPageNumber(item);
     setActivePage(item);
   };//
+
+  console.log(postPerPage)
   return (
     <div>
       <ul className="flex flex-wrap gap-2 justify-center items-center">
@@ -20,7 +22,7 @@ const PaginationNumber = ({ totalPost, postPerPage, getPageNumber,scrollToTop })
                 handleClick(item);
                 scrollToTop();
               }}
-              className={`md:w-10 md:h-10 w-8 h-8 rounded-full border border-fuchsia-400 ${
+              className={`md:w-10 md:h-10 ${postPerPage == '10' ? "w-5 h-5 -ml-1" : postPerPage == '15' ? "w-6 h-6 -ml-1" : "w-8 h-8"} rounded-full border border-fuchsia-400 ${
                 activePage === item ? 'text-white bg-fuchsia-400/70' : 'bg-white/70'
               }  flex cursor-pointer justify-center items-center border-[1px]`}
             >

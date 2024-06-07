@@ -9,7 +9,6 @@ import { PiEyeSlash } from "react-icons/pi";
 import "../../components/cssfiles/scrolling_bar.css";
 import "../../components/cssfiles/marksmcq.css";
 import HTMLReactParser from "html-react-parser";
-import PaginationNumber from "./PaginationNumber";
 // import correct from "@/public/mediaresource/music_button/right.mp3"
 //==================Import Audio Sound=============================
 // import correct from "../mediaresource/music_button/right.mp3";
@@ -172,9 +171,6 @@ const Controller = ({ getLocalVal, getRobot, questionsData,grid }) => {
     }
     return null;
   }
-  // const obj = { name: "mirazul", age: 10 };
-  // localStorage.setItem("obj", JSON.stringify(obj));
-  // const getObj = JSON.parse(localStorage.getItem("obj"));
   return (
     <div className="pb-12 md:pb-0">
       <div className="flex items-center ml-6 md:ml-0 gap-2 text-gray-700">
@@ -341,7 +337,6 @@ const Controller = ({ getLocalVal, getRobot, questionsData,grid }) => {
                   </div>
                   <div>
                     <p className="text-[12px] mt-2">
-                      {" "}
                       {HTMLReactParser(value.description)}
                     </p>
                   </div>

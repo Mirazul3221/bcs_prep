@@ -116,7 +116,7 @@ const Page = () => {
                 <Monitor questions={getQuestion.question[count]} />{" "}
                 <div
                   onClick={() => setSubSwitcher(false)}
-                  className="bg-gray-200/50 cursor-pointer shadow-lg px-2 md:px-6 py-[3px] md:py-2 rounded-md w-fit fixed bottom-2 md:bottom-4 right-4 back_bounce"
+                  className="md:bg-gray-200/50 cursor-pointer shadow-lg md:px-6 py-[3px] md:py-2 rounded-md w-fit fixed bottom-2 md:bottom-4 right-4 back_bounce"
                 >
                   <IoArrowBackCircleOutline size={30} />
                 </div>

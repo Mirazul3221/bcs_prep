@@ -154,7 +154,7 @@ const Monitor = ({ questions }) => {
                   );
                 })}
               </div>
-              <div className="fixed right-16 md:right-[120px] bottom-0 md:bottom-2 py-3">
+              <div className="fixed left-[50%] -translate-x-[50%] md:left-[120px] bottom-1 md:bottom-2 py-3 w-full">
                 <PaginationNumber
                   totalPost={questions.length}
                   postPerPage={itemsPerPage}
