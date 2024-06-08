@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Controller from "./Controller";
 import "../../components/cssfiles/responsive.css";
 import ControllerForExam from "./ControllerForExam";
 import { devider } from "@/app/subject/conponents/devider";
 import PaginationNumber from "./PaginationNumber";
+
 
 const Monitor = ({ questions }) => {
   const [navigate, setNavigate] = useState(false);
@@ -29,6 +30,10 @@ const Monitor = ({ questions }) => {
     localStorage.setItem("robot", random ? "off" : "on");
   };
 
+//  useEffect(() => {
+  
+//  }, []);
+ questions.sort((a, b) => 0.5 - Math.random())
   const devidedQuestions = devider(questions, +itemsPerPage);
 
   ///===================================================
@@ -40,7 +45,6 @@ const Monitor = ({ questions }) => {
   }
   //=========================================
   //============grid control system==============
-
   return (
     <>
       {navigate ? (
@@ -154,7 +158,7 @@ const Monitor = ({ questions }) => {
                   );
                 })}
               </div>
-              <div className="fixed left-[50%] -translate-x-[50%] md:left-[120px] bottom-1 md:bottom-2 py-3 w-full">
+              <div className="fixed left-[50%] md:left-0 -translate-x-[50%] md:translate-x-0 md:right-[120px] bottom-1 md:bottom-2 py-3 w-full">
                 <PaginationNumber
                   totalPost={questions.length}
                   postPerPage={itemsPerPage}

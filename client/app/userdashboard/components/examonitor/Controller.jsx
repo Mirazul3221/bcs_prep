@@ -15,14 +15,6 @@ import HTMLReactParser from "html-react-parser";
 // import wrong from "../mediaresource/music_button/error.mp3";
 
 const Controller = ({ getLocalVal, getRobot, questionsData,grid }) => {
-  //=================setPagination system=================
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [itemsPerPage, setItemsPerPage] = useState(20);
-  // const lastIndex = itemsPerPage * currentPage;
-  // const firstIndex = lastIndex - itemsPerPage;
-  // const questionsPerPage = questionsData.slice(firstIndex, lastIndex);
-  // const getPageNumber = number=> setCurrentPage(number);
-  // //==============================================================
   const [selectAll, setSelectAll] = useState(0);
   const [countReadingQuestion, setCountReadingQuestion] = useState(0);
   //Here is the statement about correct and inCorrect ans
