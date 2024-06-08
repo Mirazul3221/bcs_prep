@@ -1,8 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 // import { CreateEnglishDto } from './dto/create-english.dto';
 import { EnglishService } from './english.service';
 import { CreateEnglishDto } from './dto/create-english.dto';
 import { FileSystemStoredFile, FormDataRequest } from 'nestjs-form-data';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('english')
 export class EnglishController {
@@ -25,10 +26,11 @@ export class EnglishController {
   //   return this.banglaService.findAll();
   // }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.banglaService.findOne(+id);
-  // }
+  @Get('find/:id')
+  @UseGuards(AuthGuard())
+  findOne(@Param('id') id: string) {
+    return this.englishService.findOne(id);
+  }
 
   // @Patch(':id')
   // update(@Param('id') id: string, @Body() updateBanglaDto: UpdateBanglaDto) {

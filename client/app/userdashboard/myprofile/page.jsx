@@ -7,6 +7,7 @@ import storeContext from "@/app/global/createContex";
 import { PiPenLight } from "react-icons/pi";
 import { baseurl } from "@/app/config";
 import Logo from "@/app/components/Logo";
+import ProtectRoute from "@/app/global/ProtectRoute";
 
 
 const Page = () => {
@@ -64,7 +65,8 @@ useEffect(() => {
 }, []);
 
   return (
-    <div className="md:px-10 px-4 mt">
+    <ProtectRoute>
+          <div className="md:px-10 px-4 mt">
       <div className="flex justify-between items-center my-4">
         <Logo w={100}/>
       <Navbar />
@@ -147,6 +149,7 @@ useEffect(() => {
         </div>
       </div>
     </div>
+    </ProtectRoute>
   );
 };
 

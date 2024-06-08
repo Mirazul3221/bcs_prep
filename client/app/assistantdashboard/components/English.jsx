@@ -1,6 +1,6 @@
 "use client";
 import React, { useContext, useRef, useState } from "react";
-import { FaCloudUploadAlt } from "react-icons/fa";
+import { FaCloudUploadAlt, FaRegEdit } from "react-icons/fa";
 import { baseurl } from "@/app/config";
 import axios from "axios";
 import storeContext from "@/app/global/createContex";
@@ -11,7 +11,7 @@ import Gallery from "./Gallery";
 const English = () => {
   const editor = useRef(null);
   //=====All state related question value========================
-  const [show,setShow] = useState(false)
+  const [show, setShow] = useState(false);
   const [isExam, setIsExam] = useState(false);
   const { store } = useContext(storeContext);
   const [alert, setAlert] = useState("");
@@ -30,7 +30,7 @@ const English = () => {
   const [option_02, setOption_02] = useState("");
   const [option_03, setOption_03] = useState("");
   const [option_04, setOption_04] = useState("");
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState();
   console.log(subSubject, topic, examType, exam);
   //=============================================
 
@@ -87,6 +87,9 @@ const English = () => {
 
   return (
     <div className={`${show ? "fixed w-screen top-0 left-0 bg-white" : ""}`}>
+      <div className={` cursor-pointer font-medium flex justify-end mr-10`}>
+        <div className="w-8 h-8 bg-fuchsia-500 flex justify-center items-center text-white rounded-full absolute mt-1"><FaRegEdit size={20} /></div>
+      </div>
       <form className="w-fit mx-auto mt-10" onSubmit={handleSubmit}>
         <div className="flex justify-between gap-5 mt-2">
           <select
@@ -95,7 +98,8 @@ const English = () => {
             onChange={(e) => setSubSubject(e.target.value)}
             name="Brance"
             id="Brance"
-            className="bg-gray-50 w-32 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            className="bg-gray-50 w-32 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
             <option className="text-gray-400" value="" selected>
               --select--
             </option>
@@ -111,15 +115,18 @@ const English = () => {
               onChange={(e) => setTopic(e.target.value)}
               className="bg-gray-50 w-32 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               name="Literature"
-              id="Literature">
+              id="Literature"
+            >
               <option className="text-gray-400" value="" selected>
                 --select--
               </option>
-               {
-                englishTopicValue[0].topic.map((item,i)=>{
-                  return <option key={i} value={item.name}>{item.name}</option>
-                })
-               }
+              {englishTopicValue[0].topic.map((item, i) => {
+                return (
+                  <option key={i} value={item.name}>
+                    {item.name}
+                  </option>
+                );
+              })}
             </select>
           )}
           {/* ======================================================================================= */}
@@ -131,25 +138,28 @@ const English = () => {
               onChange={(e) => setTopic(e.target.value)}
               className="bg-gray-50 w-32 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               name="gg"
-              id="gg">
+              id="gg"
+            >
               <option className="text-gray-400" value="" selected>
                 --select--
               </option>
 
-              {
-                englishTopicValue[1].topic.map((item)=>{
-                  return (
-                    <>
-                      <option className="font-bold text-lg bg-gray-100" value=''>{item.name}</option>
-                      {
-                        item.subTopic.map((item,i)=>{
-                        return  <option key={i} value={item}>{item}</option>
-                        })
-                      }
-                    </>
-                  )
-                })
-              }
+              {englishTopicValue[1].topic.map((item) => {
+                return (
+                  <>
+                    <option className="font-bold text-lg bg-gray-100" value="">
+                      {item.name}
+                    </option>
+                    {item.subTopic.map((item, i) => {
+                      return (
+                        <option key={i} value={item}>
+                          {item}
+                        </option>
+                      );
+                    })}
+                  </>
+                );
+              })}
             </select>
           )}
           {/* ======================================================================================= */}
@@ -160,12 +170,17 @@ const English = () => {
               onChange={(e) => setExamType(e.target.value)}
               name="Brance"
               id="brnc"
-              className="bg-gray-50 w-32 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              className="bg-gray-50 w-32 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
               <option className="text-gray-400" value="" selected>
                 --Exam Type--
               </option>
-              {examTypeValue.map((examType,i) => {
-                return <option key={i} value={examType.type}>{examType.type}</option>;
+              {examTypeValue.map((examType, i) => {
+                return (
+                  <option key={i} value={examType.type}>
+                    {examType.type}
+                  </option>
+                );
               })}
             </select>
           )}
@@ -178,7 +193,8 @@ const English = () => {
                 onChange={(e) => setExam(e.target.value)}
                 className="bg-gray-50 w-32 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 name="bcs"
-                id="bcs">
+                id="bcs"
+              >
                 {examTypeValue[0].value.map((bcs) => {
                   return (
                     <>
@@ -197,7 +213,8 @@ const English = () => {
                 onChange={(e) => setExam(e.target.value)}
                 className="bg-gray-50 w-32 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 name="bcs"
-                id="bcs">
+                id="bcs"
+              >
                 {examTypeValue[3].value.map((admit) => {
                   return (
                     <>
@@ -263,7 +280,8 @@ const English = () => {
                 className="bg-gray-50 w-32 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 onChange={(e) => setRightAns(e.target.value)}
                 name="rightans"
-                id="rightans">
+                id="rightans"
+              >
                 <option value="">--Correct Ans--</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -314,8 +332,16 @@ const English = () => {
             {/* ======================================================================================= */}
           </div>
         </div>
-        <div onClick={()=>{setShow(true)}} className="flex items-center gap-2 cursor-pointer text-gray-600 my-2 bg-gray-100 w-fit px-4 rounded-md shadow-md">
-          <h2>Upload image</h2> <span><FaCloudUploadAlt/></span>
+        <div
+          onClick={() => {
+            setShow(true);
+          }}
+          className="flex items-center gap-2 cursor-pointer text-gray-600 my-2 bg-gray-100 w-fit px-4 rounded-md shadow-md"
+        >
+          <h2>Upload image</h2>{" "}
+          <span>
+            <FaCloudUploadAlt />
+          </span>
         </div>
         <div className="mt-4">
           <JoditEditorWrapper
@@ -331,7 +357,8 @@ const English = () => {
           <button
             disabled={loader}
             type="submit"
-            className="py-1 px-6 bg-blue-500 text-white">
+            className="py-1 px-6 bg-blue-500 text-white"
+          >
             {loader ? "Loading..." : "Create"}
           </button>
         </div>
@@ -343,9 +370,7 @@ const English = () => {
         <option value="Middle-class">Middle-class</option>
         <option value="Modern-class">Modern-class</option>
      </select> */}
-           {
-         show && <Gallery setShow={setShow} images={[]}/>
-     }
+      {show && <Gallery setShow={setShow} images={[]} />}
     </div>
   );
 };

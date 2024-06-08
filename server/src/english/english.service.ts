@@ -37,8 +37,9 @@ private englishQuestionModel: mongoose.Model<English>,){}
     return await this.englishQuestionModel.find().sort({createdAt:-1});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} bangla`;
+  findOne(id: string) {
+   const singleQuestion = this.englishQuestionModel.findById(id)
+    return singleQuestion
   }
 
   // update(id: number, updateBanglaDto:) {
