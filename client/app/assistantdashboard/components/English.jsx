@@ -100,7 +100,7 @@ const English = () => {
               --select--
             </option>
             <option value="Literature">Literature</option>
-            <option value="Grammer">Grammer</option>
+            <option value="Grammer">Grammar</option>
           </select>
           {/* ======================================================================================= */}
           {subSubject === "Literature" && (
