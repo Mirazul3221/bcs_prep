@@ -100,7 +100,7 @@ const English = () => {
               --select--
             </option>
             <option value="Literature">Literature</option>
-            <option value="Grammer">Grammar</option>
+            <option value="Grammar">Grammar</option>
           </select>
           {/* ======================================================================================= */}
           {subSubject === "Literature" && (
@@ -123,7 +123,7 @@ const English = () => {
             </select>
           )}
           {/* ======================================================================================= */}
-          {subSubject === "Grammer" && (
+          {subSubject === "Grammar" && (
             <select
               required
               onClick={() => setIsExam(true)}
