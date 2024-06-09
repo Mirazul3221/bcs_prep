@@ -28,14 +28,14 @@ export class EnglishController {
 
   @Get('find/:id')
   @UseGuards(AuthGuard())
-  findOne(@Param('id') id: string) {
-    return this.englishService.findOne(id);
+  async findOne(@Param('id') id: string) {
+    return await this.englishService.findOne(id);
   }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateBanglaDto: UpdateBanglaDto) {
-  //   return this.banglaService.update(+id, updateBanglaDto);
-  // }
+  @Patch('update/:id')
+  async update(@Param('id') id: string, @Body() body) : Promise<{msg:string}> {
+    return await this.englishService.update(id, body);
+  }
 
   // @Delete(':id')
   // remove(@Param('id') id: string) {

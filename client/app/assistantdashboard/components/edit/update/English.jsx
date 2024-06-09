@@ -1,12 +1,12 @@
 "use client";
 import React, { useContext, useRef, useState } from "react";
-import { FaRegEdit } from "react-icons/fa";
+import { TiArrowBackOutline } from "react-icons/ti";
 import { baseurl } from "@/app/config";
 import axios from "axios";
 import storeContext from "@/app/global/createContex";
 import JoditEditorWrapper from "../../joditEditor";
 
-const EditEnglish = ({setSwitcher,editQuestion}) => {
+const EditEnglish = ({ setSwitcher, editQuestion }) => {
   const editor = useRef(null);
   //=====All state related question value========================
   const { store } = useContext(storeContext);
@@ -22,16 +22,26 @@ const EditEnglish = ({setSwitcher,editQuestion}) => {
   const [content, setContent] = useState(editQuestion.description);
 
   //=============================================
-
+  const updateQuestion = {
+    question: question,
+    option_01: option_01,
+    option_02: option_02,
+    option_03: option_03,
+    option_04: option_04,
+    description:content
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setLoader(true);
-      const { data } = await axios.post(`${baseurl}/english/add`, formData, {
-        headers: {
-          Authorization: `Bearer ${store.token}`,
-        },
-      });
+      const { data } = await axios.patch(
+        `${baseurl}/english/update/${editQuestion._id}`,updateQuestion,
+        {
+          headers: {
+            Authorization: `Bearer ${store.token}`,
+          },
+        }
+      );
       //===================================
       setAlert(data.msg);
       setLoader(false);
@@ -47,11 +57,17 @@ const EditEnglish = ({setSwitcher,editQuestion}) => {
 
   return (
     <div className={`f`}>
-      <div onClick={()=>{setSwitcher(true)}} className="back">Back</div>
-      <form className="w-fit mx-auto mt-10" >
+      <div
+        onClick={() => {
+          setSwitcher(true);
+        }}
+        className="back text-gray-500 w-fit cursor-pointer"
+      >
+        <TiArrowBackOutline size={30} />
+      </div>
+      <form onSubmit={handleSubmit} className="w-fit mx-auto mt-10">
         <div className="flex justify-between gap-5 mt-2">
           {/* ========================================================================================= */}
-
         </div>
         <div className="question-form mt-4">
           <div className="flex justify-between gap-4">
@@ -130,7 +146,7 @@ const EditEnglish = ({setSwitcher,editQuestion}) => {
             type="submit"
             className="py-1 px-6 bg-blue-500 text-white"
           >
-            {loader ? "Loading..." : "Create"}
+            {loader ? "Loading..." : "Update"}
           </button>
         </div>
       </form>

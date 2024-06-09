@@ -37,14 +37,16 @@ private englishQuestionModel: mongoose.Model<English>,){}
     return await this.englishQuestionModel.find().sort({createdAt:-1});
   }
 
-  findOne(id: string) {
-   const singleQuestion = this.englishQuestionModel.findById(id)
+  async findOne(id: string) {
+   const singleQuestion =await this.englishQuestionModel.findById(id)
     return singleQuestion
   }
 
-  // update(id: number, updateBanglaDto:) {
-  //   return `This action updates a #${id} bangla`;
-  // }
+ async update(id: string, body) : Promise<{msg:string}> {
+  await this.englishQuestionModel.findByIdAndUpdate(id,body,{new:true})
+    return await {msg: `updates English questin with id no : ${id} (successfully)`};
+    
+  }
 
   remove(id: number) {
     return `This action removes a #${id} bangla`;
