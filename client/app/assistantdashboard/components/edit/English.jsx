@@ -58,9 +58,9 @@ const English = () => {
         <div className="">
           {switcher && (
             <div>
-              {data?.map((question) => {
+              {data?.map((question,i) => {
                 return (
-                  <div className="px-8 py-2 my-2 border-t-2 flex gap-2">
+                  <div key={i} className="px-8 py-2 my-2 border-t-2 flex gap-2">
                     <h2 className="w-2/12">{question.topic}</h2>
                     <h2 className="w-7/12">{question.question}</h2>
                     <div className="w-3/12 flex justify-center">
