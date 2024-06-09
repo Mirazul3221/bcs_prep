@@ -81,7 +81,7 @@ const English = () => {
               })}
             </div>
           )}
-          {switcher === false && <div><EditEnglish editQuestion={singleData}/></div>}
+          {switcher === false && <div><EditEnglish setSwitcher={setSwitcher}  editQuestion={singleData}/></div>}
         </div>
       ) : (
         <div className="flex justify-center items-center w-full h-full">

@@ -6,7 +6,7 @@ import axios from "axios";
 import storeContext from "@/app/global/createContex";
 import JoditEditorWrapper from "../../joditEditor";
 
-const EditEnglish = ({editQuestion}) => {
+const EditEnglish = ({setSwitcher,editQuestion}) => {
   const editor = useRef(null);
   //=====All state related question value========================
   const { store } = useContext(storeContext);
@@ -47,6 +47,7 @@ const EditEnglish = ({editQuestion}) => {
 
   return (
     <div className={`f`}>
+      <div onClick={()=>{setSwitcher(true)}} className="back">Back</div>
       <form className="w-fit mx-auto mt-10" >
         <div className="flex justify-between gap-5 mt-2">
           {/* ========================================================================================= */}
