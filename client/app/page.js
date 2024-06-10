@@ -11,6 +11,14 @@ import Header from "./components/Header";
 import Section_01 from "./components/Section_01";
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
+   let number = []
+   for(let i = 1; i <= 100; i ++){
+       number.push(i)
+   }
+
+
+   number.sort((a , b)=> 0.5 - Math.random())
+  console.log( number)
 
   useEffect(() => {
     setIsClient(true);

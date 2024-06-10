@@ -33,7 +33,6 @@ const Monitor = ({ questions }) => {
 //  useEffect(() => {
   
 //  }, []);
- questions.sort((a, b) => 0.5 - Math.random())
   const devidedQuestions = devider(questions, +itemsPerPage);
 
   ///===================================================

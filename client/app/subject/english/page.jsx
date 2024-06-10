@@ -54,6 +54,11 @@ const Page = () => {
   // console.log(filterData)
   //==============End API====================
 
+
+    filterData?.sort((a, b) => 0.5 - Math.random())
+
+  
+
   const getQuestion = devider(filterData, 100);
   //==========================
   
@@ -113,7 +118,7 @@ const Page = () => {
             </div>
             {subSwitcher && (
               <div>
-                <Monitor questions={getQuestion.question[count]} />{" "}
+                <Monitor questions={getQuestion.question[count]} />
                 <div
                   onClick={() => setSubSwitcher(false)}
                   className="md:bg-gray-200/50 cursor-pointer shadow-lg md:px-6 py-[3px] md:py-2 rounded-md w-fit fixed bottom-2 md:bottom-4 right-4 back_bounce"
