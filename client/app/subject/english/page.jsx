@@ -12,10 +12,10 @@ import axios from "axios";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import "../../userdashboard/components/cssfiles/marksmcq.css";
-import CommingSoom from "../conponents/CommingSoom";
 import { ExamBasedQuestion } from "../conponents/ExamBased";
 import ProtectRoute from "@/app/global/ProtectRoute";
 import { devider } from "../conponents/devider";
+import QuestionLoader from "../conponents/QuestionLoader";
 const Page = () => {
   // const [navValue, setNaveValue] = useState("home");
   const [title, setTitle] = useState("");
@@ -107,7 +107,7 @@ const Page = () => {
             </div>
                 </div>
               ) : (
-                <CommingSoom />
+                <QuestionLoader/>
               )}
               <div
                 onClick={() => setSwitcher(false)}

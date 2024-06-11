@@ -49,7 +49,6 @@ const UserDashboard = () => {
             </Link>
           </div>
           <div className="flex gap-4 items-center">
-            {" "}
             <Navbar />
             <Link href={"./userdashboard/myprofile"}>
               <Profile profile={store.userInfo.profile} />
