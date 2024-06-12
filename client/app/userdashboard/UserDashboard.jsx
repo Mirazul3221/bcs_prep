@@ -8,11 +8,12 @@ import Navbar from "./components/Navbar";
 import Logo from "../components/Logo";
 import Layout from "./components/Layout";
 import Profile from "./components/Profile";
+import SearchEngin from "../components/SearchEngin";
 // import Image from "next/image";
 // import logo from "@/public/bcs-logo.png"
 // import { TextEditor } from './components/TextEditor';
 const UserDashboard = () => {
-  const [data, setData] = useState();
+  const [search,setSearch] = useState("")
   const { store } = useContext(storeContext);
   // useEffect(() => {
   //   async function fetchData() {
@@ -50,16 +51,20 @@ const UserDashboard = () => {
           </div>
           <div className="flex gap-4 items-center">
             <Navbar />
+           
             <Link href={"./userdashboard/myprofile"}>
               <Profile profile={store.userInfo.profile} />
             </Link>
           </div>
         </div>
         <div className="wrapper">
-          <h2 className="md:text-lg text-sm md:mt-10 mt-4 text-balance">
-            Hey <span className="text-rose-300">{store.userInfo.name}</span>,
+      <div className="flex gap-10 items-center">
+      <h2 className="md:text-lg text-sm text-balance">
+            Hey <span className="text-[#d000ff]">{store.userInfo.name}</span>,
             Welcome
           </h2>
+          <SearchEngin takeValue={setSearch}/>
+      </div>
           <Layout />
         </div>
       </ProtectRoute>

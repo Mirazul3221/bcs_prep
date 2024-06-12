@@ -9,12 +9,13 @@ import { PiEyeSlash } from "react-icons/pi";
 import "../../components/cssfiles/scrolling_bar.css";
 import "../../components/cssfiles/marksmcq.css";
 import HTMLReactParser from "html-react-parser";
+import SearchEngin from "@/app/components/SearchEngin";
 // import correct from "@/public/mediaresource/music_button/right.mp3"
 //==================Import Audio Sound=============================
 // import correct from "../mediaresource/music_button/right.mp3";
 // import wrong from "../mediaresource/music_button/error.mp3";
 
-const Controller = ({ getLocalVal, getRobot, questionsData,grid }) => {
+const Controller = ({ getLocalVal, getRobot, questionsData,grid,allQuestion,megaQuestions }) => {
   const [selectAll, setSelectAll] = useState(0);
   const [countReadingQuestion, setCountReadingQuestion] = useState(0);
   //Here is the statement about correct and inCorrect ans
@@ -23,6 +24,7 @@ const Controller = ({ getLocalVal, getRobot, questionsData,grid }) => {
   //Here is thatement about negitive and positive marks
   const [positiveMarks, setPositiveMarks] = useState(0);
   const [negitiveMarks, setNegitiveMarks] = useState(0);
+  const [search,setSearch] = useState("")
   const heyRobot = getRobot;
   //=======================================
   const volumeSound = localStorage.getItem("volume");
@@ -106,23 +108,23 @@ const Controller = ({ getLocalVal, getRobot, questionsData,grid }) => {
     return index === getReadQuestion?.findIndex((item2) => item2 === item);
   });
   function readQuestion() {
-    const finerResult = [];
+    const finelResult = [];
     for (let i = 0; i < exactReadQuestion?.length; i++) {
-      const filterData = questionsData?.filter((singleQue) => {
+      const filterData = allQuestion?.filter((singleQue) => {
         const filterLength = singleQue._id === exactReadQuestion[i];
         return filterLength;
       });
 
       filterData?.map((que) => {
         if (que._id !== undefined) {
-          finerResult.push(que._id);
+          finelResult.push(que._id);
           // console.log(que._id);
         }
       });
       // console.log(filterData[0]?._id)
     }
     setTimeout(() => {
-      setCountReadingQuestion(finerResult.length);
+      setCountReadingQuestion(finelResult.length);
     }, 100);
   }
   readQuestion();
@@ -163,9 +165,12 @@ const Controller = ({ getLocalVal, getRobot, questionsData,grid }) => {
     }
     return null;
   }
+
+  console.log(megaQuestions)
   return (
     <div className="pb-12 md:pb-0">
-      <div className="flex items-center ml-6 md:ml-0 gap-2 text-gray-700">
+  <div className="flex gap-10 items-center">
+  <div className="flex items-center ml-6 md:ml-0 gap-2 text-gray-700">
         <FaBookReader size={20} />
         <h2 className="my-2 text-[11px] md:text-lg">
           এই পর্যন্ত আপনি (
@@ -175,6 +180,8 @@ const Controller = ({ getLocalVal, getRobot, questionsData,grid }) => {
           ) টি প্রশ্ন পড়ছেন।
         </h2>
       </div>
+      <SearchEngin takeValue={setSearch}/>
+  </div>
 
       <div className={`grid ${grid ==1 ? "md:grid-cols-1" : grid == 2 ? "md:grid-cols-2" : grid == 3 ? "md:grid-cols-3" :  grid == 4 ? "md:grid-cols-4" :  grid == 5 ?  "md:grid-cols-5" : ""} gap-4`}>
         {/* =============================================

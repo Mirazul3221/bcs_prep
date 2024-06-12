@@ -1,8 +1,8 @@
 "use client";
 // import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
-import CustomTimer from "./mainpage_components/timer";
-import Roboticx from "./mainpage_components/robotix";
+// import CustomTimer from "./mainpage_components/timer";
+// import Roboticx from "./mainpage_components/robotix";
 import storeContext from "./global/createContex";
 import UserDashboard from "./userdashboard/UserDashboard";
 import AdminDashboard from "./admindashboard/AdminDashboard";
@@ -42,8 +42,6 @@ export default function Home() {
             <div className="fixed -z-10">
               
               <div className="relative w-screen h-screen ">
-                <CustomTimer />
-                <Roboticx />
                 <div className="w-screen h-screen absolute md:flex justify-center items-center top-0 left-0 bg-white/50 md:bg-white/90">
                       <h2 className="md:text-[60px] backdrop-blur-md md:backdrop-blur-0 text-gray-700 text-[24px] text-center font-bold mt-28 py-28 md:-mt-[130px]">
                         <span className=" px-4 bg-white/70 rounded-full"> Welcome</span> <br/> to the <span className="bg-fuchsia-600 text-shadow-lg py-2 px-6 text-white rounded-full">BCS Preparation</span> <br/> online platform
@@ -60,3 +58,6 @@ export default function Home() {
     );
   }
 }
+
+             // <CustomTimer />
+                // <Roboticx />

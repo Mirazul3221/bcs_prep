@@ -51,7 +51,6 @@ const Page = () => {
     return returnFilterValue;
   };
   const filterData = filterValue(getTopicValue);
-  // console.log(filterData)
   //==============End API====================
 
 
@@ -118,7 +117,7 @@ const Page = () => {
             </div>
             {subSwitcher && (
               <div>
-                <Monitor questions={getQuestion.question[count]} />
+                <Monitor questions={getQuestion.question[count]} megaQuestions={filterData} />
                 <div
                   onClick={() => setSubSwitcher(false)}
                   className="md:bg-gray-200/50 cursor-pointer shadow-lg md:px-6 py-[3px] md:py-2 rounded-md w-fit fixed bottom-2 md:bottom-4 right-4 back_bounce"
@@ -277,4 +276,4 @@ const Page = () => {
 };
 
 export default Page;
-//=========helo world================dffffffffffff
+//=========helo world=============
