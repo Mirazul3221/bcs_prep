@@ -8,8 +8,8 @@ const Header = () => {
     const [switcher1,setSwitcher1]=useState(false)
     console.log(switcher1)
   return (
-    <div className="px-10 md:p-0">
-      <div className="flex justify-between md:mx-20 py-3">
+    <div className="md:p-0 px-4">
+      <div className="flex justify-between py-3">
           <FaBars onClick={()=>{
             setSwitcher(true)
              setTimeout(() => {
@@ -60,39 +60,39 @@ const Header = () => {
         </div>
 
         {/* ============================================================ */}
-        <ul className="mx-auto md:flex hidden">
-          <li className="text-lg font-normal px-4 py-[4px] hover:bg-slate-100 hover:border-gray-200 text-gray-700 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-white">
+        <ul className="md:flex hidden">
+          <li className="text-lg font-normal px-4 py-[4px] w-fit cursor-pointer duration-500 rounded-md border-[1px]">
             About Us
           </li>
-          <li className="text-lg font-normal px-4 py-[4px] hover:bg-slate-100 hover:border-gray-200 text-gray-700 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-white">
+          {/* <li className="text-lg font-normal px-4 py-[4px] hover:bg-slate-100 hover:border-gray-200 text-gray-700 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-white">
             Our Team
-          </li>
-          <li className="text-lg font-normal px-4 py-[4px] hover:bg-slate-100 hover:border-gray-200 text-gray-700 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-white">
+          </li> */}
+          {/* <li className="text-lg font-normal px-4 py-[4px] hover:bg-slate-100 hover:border-gray-200 text-gray-700 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-white">
             Service
-          </li>
-          <li className="text-lg font-normal px-4 py-[4px] hover:bg-slate-100 hover:border-gray-200 text-gray-700 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-white">
+          </li> */}
+          {/* <li className="text-lg font-normal px-4 py-[4px] hover:bg-slate-100 hover:border-gray-200 text-gray-700 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-white">
             Blogs
-          </li>
-          <li className="text-lg font-normal px-4 py-[4px] hover:bg-slate-100 hover:border-gray-200 text-gray-700 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-white">
+          </li> */}
+          <li className="text-lg font-normal px-4 py-[4px] text-gray-700 w-fit cursor-pointer duration-500 rounded-md border-[1px]">
             BCS corner
           </li>
-          <li className="text-lg font-normal px-4 py-[4px] hover:bg-slate-100 hover:border-gray-200 text-gray-700 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-white">
+          {/* <li className="text-lg font-normal px-4 py-[4px] hover:bg-slate-100 hover:border-gray-200 text-gray-700 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-white">
             Recent News
-          </li>
-          <li className="text-lg font-normal px-4 py-[4px] hover:bg-slate-100 hover:border-gray-200 text-gray-700 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-white">
+          </li> */}
+          {/* <li className="text-lg font-normal px-4 py-[4px] hover:bg-slate-100 hover:border-gray-200 text-gray-700 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-white">
             Job Circular
-          </li>
-          <li className="text-lg font-normal px-4 py-[4px] hover:bg-slate-100 hover:border-gray-200 text-gray-700 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-white">
+          </li> */}
+          <li className="text-lg font-normal px-4 py-[4px] text-gray-700 w-fit cursor-pointer duration-500 rounded-md border-[1px]">
             Contact Info
           </li>
           <Link href={"/register"}>
-            <li className="text-lg font-normal px-4 py-[4px] ml-2 hover:text-white hover:bg-green-500 text-green-500 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-green-500">
+            <li className="text-lg font-normal px-4 py-[4px] ml-2 hover:text-white  hover:bg-fuchsia-500 text-fuchsia-500 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-fuchsia-500">
               Join
             </li>
           </Link>
         </ul>
         <Link className="md:hidden" href={"/register"}>
-            <div className="text-lg font-normal px-4 py-[4px] ml-2 hover:text-white hover:bg-fuchsia-500 text-fuchsia-500 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-green-500">
+            <div className="text-lg font-normal px-4 py-[4px] ml-2 hover:text-white hover:bg-fuchsia-500 text-fuchsia-500 w-fit cursor-pointer duration-500 rounded-md border-[1px] border-fuchsia-500">
               Join
             </div>
           </Link>

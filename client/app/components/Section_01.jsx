@@ -3,7 +3,7 @@ import React from 'react'
 import bcs_banner from "@/public/bcs-banner.png"
 const Section_01 = () => {
   return (
-    <div className='w-screen h-screen mt-[90vh] bg-white md:flex justify-between items-center md:p-20'>
+    <div className='w-screen h-screen bg-white md:flex justify-between items-center p-4 md:p-20'>
   <div className="md:flex justify-between items-center gap-6">
   <div className="left md:w-1/2 px-2">
   <h2 className='font-bold md:text-2xl pb-2 border-b-2'>কেন আপনি বিসিএস প্রি-পারেশান অনলাইন প্লাটফর্ম থেকে স্টাডি করবেন?</h2>

@@ -9,6 +9,9 @@ import AdminDashboard from "./admindashboard/AdminDashboard";
 import AssistantHome from "./assistantdashboard/Home";
 import Header from "./components/Header";
 import Section_01 from "./components/Section_01";
+import laptop from "@/public/laptop-view.png"
+import Image from "next/image";
+import "./anim.css"
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
    let number = []
@@ -35,19 +38,27 @@ export default function Home() {
     return (
       <div>
         {isClient ? (
-          <main className="overflow-x-hidden max-w-[1440px] mx-auto">
+          <main className="overflow-x-hidden max-w-[1440px] relative md:px-20">
+            <div className="absolute top-0 h-[100vh] w-[200vw] bg-gray-200 -z-10 rotate-12 -left-20 md:-left-10"></div>
+
             <Header />
-            {/* <div className="w-screen h-screen mt-[100vh] bg-white"></div> */}
-            {/* <div className="w-screen h-screen bg-red-100"></div> */}
-            <div className="fixed -z-10">
+            <div className="md:flex justify-between items-center p-4">
+             <div className="md:w-1/2 laptop-anim hidden md:block"><Image className="md:pt-20" src={laptop} alt="laptop-view"/></div>
+             <div className="md:w-1/2">
+             <h2 className="text-3xl text-gray-700">A New Way to Learn</h2>
+             <h2 className="text-lg">This is the best platform to help you enhance your skills, expand your knowledge and prepare for BCS exam.</h2>
+             </div>
+             <div className="md:w-1/2 laptop-anim md:hidden"><Image className="md:pt-20" src={laptop} alt="laptop-view"/></div>
+            </div>
+            <div className="">
               
-              <div className="relative w-screen h-screen ">
+              {/* <div className="relative w-screen h-screen ">
                 <div className="w-screen h-screen absolute md:flex justify-center items-center top-0 left-0 bg-white/50 md:bg-white/90">
                       <h2 className="md:text-[60px] backdrop-blur-md md:backdrop-blur-0 text-gray-700 text-[24px] text-center font-bold mt-28 py-28 md:-mt-[130px]">
                         <span className=" px-4 bg-white/70 rounded-full"> Welcome</span> <br/> to the <span className="bg-fuchsia-600 text-shadow-lg py-2 px-6 text-white rounded-full">BCS Preparation</span> <br/> online platform
                       </h2>
                 </div>
-              </div>
+              </div> */}
             </div>
           <Section_01/>
           </main>
