@@ -39,7 +39,7 @@ export default function Home() {
       <div>
         {isClient ? (
           <main className="overflow-x-hidden max-w-[1440px] relative md:px-20">
-            <div className="absolute top-0 h-[100vh] w-[200vw] bg-gray-200 -z-10 rotate-12 -left-20 md:-left-10"></div>
+            <div className="absolute top-0 h-[100vh] w-[200vw] bg-gray-300 -z-10 rotate-12 -left-20 md:-left-10"></div>
 
             <Header />
             <div className="md:flex justify-between items-center p-4">
