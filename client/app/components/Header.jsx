@@ -9,7 +9,7 @@ const Header = () => {
  //=============set scroll for header================
  const [header,setHeader] = useState(false)
  const scrollHeader = ()=>{
-    if (window.scrollY >= 20) {
+    if (window.scrollY >= 40) {
       setHeader(true)
     } else {
       setHeader(false)
