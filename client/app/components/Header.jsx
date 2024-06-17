@@ -24,7 +24,7 @@ const Header = () => {
 
   return (
     <div className={`md:p-0 px-4 ${header ? "fixed w-full left-0 top-0 bg-white/50 shadow-lg duration-500 z-50 backdrop-blur-md" : ""}`}>
-      <div className={`flex justify-between py-3 ${header ? "px-20 duration-100" : ""}`}>
+      <div className={`flex justify-between py-3 ${header ? "md:px-20 duration-100" : ""}`}>
         <FaBars
           onClick={() => {
             setSwitcher(true);
