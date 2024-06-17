@@ -11,7 +11,10 @@ import Header from "./components/Header";
 import Section_01 from "./components/Section_01";
 import "./anim.css"
 import BannerSection from "./components/BannerSection";
+import Projects from "./components/Cards";
 export default function Home() {
+  const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
+  
   const [isClient, setIsClient] = useState(false);
    let number = []
    for(let i = 1; i <= 100; i ++){
@@ -20,7 +23,6 @@ export default function Home() {
 
 
    number.sort((a , b)=> 0.5 - Math.random())
-  console.log( number)
 
   useEffect(() => {
     setIsClient(true);
@@ -37,12 +39,16 @@ export default function Home() {
     return (
       <div>
         {isClient ? (
-          <main className="overflow-x-hidden max-w-[1440px] relative md:px-20">
-            <div className="absolute top-0 md:h-[100vh] h-[60vh] w-[200vw] bg-gray-300 -z-10 rotate-12 -left-20 md:-left-10"></div>
+          <main className="max-w-[1440px] md:px-20">
+           <div className="fixed -z-10 top-0 left-0 overflow-hidden w-screen h-screen">
+           <div className="absolute -top-10 md:h-[110vh] h-[60vh] w-[200vw] bg-gray-300 -z-10 rotate-12 -left-20 md:-left-48"></div>
+           </div>
+          
 
             <Header />
-            <BannerSection/>
+          <BannerSection/>
           <Section_01/>
+          <div className="bg-white"><Projects/></div>
           </main>
         ) : (
           <></>

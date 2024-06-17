@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "./Logo";
 import { FaBars } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
@@ -6,10 +6,25 @@ import Link from "next/link";
 const Header = () => {
   const [switcher, setSwitcher] = useState(false);
   const [switcher1, setSwitcher1] = useState(false);
-  console.log(switcher1);
+ //=============set scroll for header================
+ const [header,setHeader] = useState(false)
+ const scrollHeader = ()=>{
+    if (window.scrollY >= 20) {
+      setHeader(true)
+    } else {
+      setHeader(false)
+    }
+ }
+ useEffect(() => {
+  window.addEventListener("scroll",scrollHeader)
+  return () => {
+    window.addEventListener("scroll",scrollHeader)
+  };
+ }, []);
+
   return (
-    <div className="md:p-0 px-4">
-      <div className="flex justify-between py-3">
+    <div className={`md:p-0 px-4 ${header ? "fixed w-full left-0 top-0 bg-white/50 shadow-lg duration-500 z-50 backdrop-blur-md" : ""}`}>
+      <div className={`flex justify-between py-3 ${header ? "px-20 duration-100" : ""}`}>
         <FaBars
           onClick={() => {
             setSwitcher(true);
