@@ -21,10 +21,10 @@ export class EnglishController {
     return await this.englishService.findAll();
   }
 
-  // @Get()
-  // findAll() {
-  //   return this.banglaService.findAll();
-  // }
+  @Get('/q')
+  multipleQue() {
+    return this.englishService.multipleQue();
+  }
 
   @Get('find/:id')
   @UseGuards(AuthGuard())
