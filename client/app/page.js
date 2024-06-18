@@ -39,7 +39,7 @@ export default function Home() {
     return (
       <div>
         {isClient ? (
-          <main className="max-w-[1440px] md:px-20">
+          <main className="max-w-[1440px]">
            <div className="fixed -z-10 top-0 left-0 overflow-hidden w-screen h-screen">
            <div className="absolute -top-10 md:h-[110vh] h-[60vh] w-[200vw] bg-gray-300 -z-10 rotate-12 -left-20 md:-left-48"></div>
            </div>
@@ -48,7 +48,7 @@ export default function Home() {
             <Header />
           <BannerSection/>
           <Section_01/>
-          <div className="bg-white"><Projects/></div>
+          <div className="bg-[#1c1a24] md:p-20 md:pt-0 p-4"><Projects/></div>
           </main>
         ) : (
           <></>

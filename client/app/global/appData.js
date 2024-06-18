@@ -1,3 +1,7 @@
+import banner01 from '@/public/banner/banner01.jpg'
+import banner02 from '@/public/banner/banner02.jpg'
+import banner03 from '@/public/banner/banner03.jpg'
+import banner04 from '@/public/banner/banner04.jpg'
 export const projectsData = [
     {
         id: 1,
@@ -7,7 +11,7 @@ export const projectsData = [
         role: 'Backend Developer',
         code: '',
         demo: '',
-        image: "",
+        image: banner01,
     },
     {
         id: 2,
@@ -17,7 +21,7 @@ export const projectsData = [
         role: 'Full Stack Developer',
         code: '',
         demo: '',
-        image: "",
+        image: banner02,
     },
     {
         id: 3,
@@ -27,7 +31,7 @@ export const projectsData = [
         code: '',
         role: 'Full Stack Developer',
         demo: '',
-        image: "",
+        image: banner03,
     },
     {
         id: 4,
@@ -36,7 +40,7 @@ export const projectsData = [
         tools: ['NextJS', 'Material UI', 'Redux', 'Sun Editor', "Calendar"],
         code: '',
         demo: '',
-        image: "",
+        image: banner04,
         role: 'Full Stack Developer',
     }
 ];

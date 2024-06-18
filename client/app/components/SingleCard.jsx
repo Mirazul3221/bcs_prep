@@ -1,7 +1,12 @@
+
 import * as React from 'react';
 const SingleCard = ({project}) => {
+  console.log(project.image)
   return (
-    <div className="from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37] w-full">
+    <div className={`border-[#1b2c68a0] relative rounded-lg border w-full h-fit md:h-full overflow-hidden`}>
+    <div className="absolute top-0 left-0 w-full h-full -z-20">
+      <img className='w-full h-full' src={project.image.src} alt='banner-img'/>
+    </div>
     <div className="flex flex-row">
       <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-pink-500 to-violet-600"></div>
       <div className="h-[1px] w-full bg-gradient-to-r from-violet-600 to-transparent"></div>

@@ -3,7 +3,7 @@ import laptop from "@/public/laptop-view.png"
 import Image from "next/image";
 const BannerSection = () => {
   return (
-    <div>
+    <div className="md:px-20">
       <div className="md:flex justify-between items-center p-4">
         <div className="md:w-1/2 laptop-anim hidden md:block">
           <Image className="md:pt-20" src={laptop} alt="laptop-view" />

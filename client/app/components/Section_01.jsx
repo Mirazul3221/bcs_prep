@@ -4,7 +4,7 @@ import bcs_banner from "@/public/bcs-banner.png"
 import mobile from '@/public/mobile-view.png'
 const Section_01 = () => {
   return (
-    <div className='w-full md:flex justify-between items-center p-4 md:p-20'>
+    <div className='w-full md:flex justify-between items-center p-4 md:px-20'>
   <div className="md:flex justify-between items-center gap-6">
   <div className="left md:w-1/2 px-2">
   <h2 className='font-bold md:text-2xl pb-2 border-b-2'>কেন আপনি বিসিএস প্রি-পারেশান অনলাইন প্লাটফর্ম থেকে স্টাডি করবেন?</h2>
