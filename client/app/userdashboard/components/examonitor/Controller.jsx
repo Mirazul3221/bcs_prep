@@ -1,5 +1,6 @@
 "use client";
 import React, { useContext, useEffect, useState } from "react";
+import loveAnim from "@/public/love.gif"
 import { CiCircleQuestion } from "react-icons/ci";
 import { LiaClipboardListSolid } from "react-icons/lia";
 import { FaBookReader } from "react-icons/fa";
@@ -15,6 +16,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 import axios from "axios";
 import { baseurl } from "@/app/config";
 import storeContext from "@/app/global/createContex";
+import Image from "next/image";
 // import correct from "@/public/mediaresource/music_button/right.mp3"
 //==================Import Audio Sound=============================
 // import correct from "../mediaresource/music_button/right.mp3";
@@ -181,16 +183,20 @@ const Controller = ({
 
   //=====================Questions save intigration=================
   const [saveQue,setSaveQue] = useState([])
+  const [saveQLoader,setSaveQueLoader] = useState(false)
 const { store } = useContext(storeContext);
 const saveQuestion =async (id) => {
   try {
+    setSaveQueLoader(true)
     const { data } = await axios.post(`${baseurl}/savequestions/create`,{question_id:id}, {
       headers: {
         Authorization: `Bearer ${store.token}`,
       },
     });
+    setSaveQueLoader(false)
     console.log(data)
   } catch (error) {
+    setSaveQueLoader(false)
     console.log(error);
   }
 }
@@ -210,7 +216,7 @@ useEffect(() => {
     }
   }
   fetchData();
-}, [store.token]);
+}, [store.token,saveQLoader]);
 
 const checkSaveQuestion = (id)=>{
  const filterQue = saveQue.filter((questionId)=>{
@@ -434,7 +440,7 @@ const checkSaveQuestion = (id)=>{
                     <div className="flex justify-end">
                       <div className="flex gap-2">
                         <div onClick={()=>saveQuestion(value._id)} className="px-4 py-2 rounded-full border cursor-pointer border-fuchsia-500">
-                          {checkSaveQuestion(value._id)}
+                         {saveQLoader ? <Image className="w-6" src={loveAnim} alt="love"/> : checkSaveQuestion(value._id)}
                         </div>
                         <div className="flex items-center gap-[1px] right-2 shadow-sm px-4 py-2 rounded-full border border-fuchsia-500">
                           {value._id ===
