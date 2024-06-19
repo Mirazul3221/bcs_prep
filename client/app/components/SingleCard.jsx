@@ -3,7 +3,7 @@ import * as React from 'react';
 const SingleCard = ({project}) => {
   console.log(project.image)
   return (
-    <div className={`border-[#1b2c68a0] relative rounded-lg border w-full h-fit md:h-full overflow-hidden`}>
+    <div className={`border-[#1b2c68a0] relative rounded-lg border w-full h-fit md:h-full overflow-hidden px-20`}>
     <div className="absolute top-0 left-0 w-full h-full -z-20">
       <img className='w-full h-full' src={project.image.src} alt='banner-img'/>
     </div>
@@ -21,8 +21,8 @@ const SingleCard = ({project}) => {
         {project.name}
       </p>
     </div>
-    <div className="overflow-hidden border-t-[2px] border-indigo-900 px-4 lg:px-8 py-4 lg:py-8">
-      <code className="font-mono text-xs md:text-sm lg:text-base">
+    <div className="overflow-hidden border-t-[2px] border-indigo-900 px-4 lg:px-8 py-4 lg:py-8 flex gap-10">
+      <code className="font-mono text-xs md:text-sm lg:text-base md:w-1/2">
         <div className="blink">
           <span className="mr-2 text-pink-500">const</span>
           <span className="mr-2 text-white">project</span>
@@ -64,6 +64,9 @@ const SingleCard = ({project}) => {
         </div>
         <div><span className="text-gray-400">{`};`}</span></div>
       </code>
+      <div className="md:w-1/2 flex justify-end">
+       <img className='w-2/3' src={`${project?.mobile?.src}`} alt="mobile-frame" />
+      </div>
     </div>
   </div>
   )

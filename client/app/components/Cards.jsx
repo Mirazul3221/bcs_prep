@@ -21,7 +21,7 @@ const Projects = () => {
                 key={index}
                 className="sticky-card w-full mx-auto sticky"
               >
-                <div className="rounded transition-all duration-[0.5s] w-full md:h-[100vh]">
+                <div className="rounded transition-all duration-[0.5s] w-full md:h-[110vh]">
                   <SingleCard project={project} />
                 </div>
               </div>

@@ -2,6 +2,9 @@ import banner01 from '@/public/banner/banner01.jpg'
 import banner02 from '@/public/banner/banner02.jpg'
 import banner03 from '@/public/banner/banner03.jpg'
 import banner04 from '@/public/banner/banner04.jpg'
+import mobile01 from "@/public/banner/mobile01.png"
+import mobile02 from "@/public/banner/mobile02.png"
+
 export const projectsData = [
     {
         id: 1,
@@ -12,6 +15,7 @@ export const projectsData = [
         code: '',
         demo: '',
         image: banner01,
+        mobile:mobile01
     },
     {
         id: 2,
@@ -22,6 +26,7 @@ export const projectsData = [
         code: '',
         demo: '',
         image: banner02,
+        mobile:mobile02
     },
     {
         id: 3,
