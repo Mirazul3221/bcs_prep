@@ -12,6 +12,9 @@ import Section_01 from "./components/Section_01";
 import "./anim.css"
 import BannerSection from "./components/BannerSection";
 import Projects from "./components/Cards";
+import Image from "next/image";
+import manymobile from '@/public/banner/multiplemobile.png'
+import { FaFacebook, FaLinkedin, FaSquareWhatsapp } from "react-icons/fa6";
 export default function Home() {
   const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
   
@@ -49,8 +52,18 @@ export default function Home() {
           <BannerSection/>
           <Section_01/>
           <div className="bg-[#1c1a24]"><Projects/></div>
-          <div className="h-screen bg-white">
-            <h1 className="text-2xl mb-2"> Why do we use it?</h1>
+          <div className="bg-white flex justify-center py-10">
+            <Image src={manymobile} alt="multiple mobile"/>
+          </div>
+          <div className="footer flex justify-between items-center py-4 md:px-20 px-4 bg-gray-300">
+                <h2>
+                © Copyright 2024 | All Rights Reserved | Powered by Mirazul islam
+                </h2>
+                <div className="flex items-center md:gap-4 gap-2">
+                  <FaFacebook size={25}/>
+                  <FaSquareWhatsapp size={25}/>
+                  <FaLinkedin size={25}/>
+                </div>
           </div>
           </main>
         ) : (
