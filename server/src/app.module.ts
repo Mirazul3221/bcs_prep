@@ -9,6 +9,7 @@ import { EnglishModule } from './english/english.module';
 import { MathModule } from './math/math.module';
 import { GalleryModule } from './gallery/gallery.module';
 import { MyProfileModule } from './userprofile/myprofile.module';
+import { SavequestionsModule } from './savequestions/savequestions.module';
 
 @Module({
   imports: [
@@ -24,7 +25,8 @@ import { MyProfileModule } from './userprofile/myprofile.module';
     EnglishModule,
     MathModule,
     GalleryModule,
-    MyProfileModule
+    MyProfileModule,
+    SavequestionsModule
   ],
   controllers: [AppController],
   providers: [AppService],

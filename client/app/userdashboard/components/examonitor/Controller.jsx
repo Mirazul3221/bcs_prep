@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CiCircleQuestion } from "react-icons/ci";
 import { LiaClipboardListSolid } from "react-icons/lia";
 import { FaBookReader } from "react-icons/fa";
@@ -11,6 +11,10 @@ import "../../components/cssfiles/marksmcq.css";
 import HTMLReactParser from "html-react-parser";
 import SearchEngin from "@/app/components/SearchEngin";
 import { AiFillHeart } from "react-icons/ai";
+import { AiOutlineHeart } from "react-icons/ai";
+import axios from "axios";
+import { baseurl } from "@/app/config";
+import storeContext from "@/app/global/createContex";
 // import correct from "@/public/mediaresource/music_button/right.mp3"
 //==================Import Audio Sound=============================
 // import correct from "../mediaresource/music_button/right.mp3";
@@ -174,7 +178,52 @@ const Controller = ({
     return null;
   }
 
-  console.log(megaQuestions);
+
+  //=====================Questions save intigration=================
+  const [saveQue,setSaveQue] = useState([])
+const { store } = useContext(storeContext);
+const saveQuestion =async (id) => {
+  try {
+    const { data } = await axios.post(`${baseurl}/savequestions/create`,{question_id:id}, {
+      headers: {
+        Authorization: `Bearer ${store.token}`,
+      },
+    });
+    console.log(data)
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+useEffect(() => {
+  async function fetchData() {
+    try {
+      const { data } = await axios.get(`${baseurl}/savequestions/all`, {
+        headers: {
+          Authorization: `Bearer ${store.token}`,
+        },
+      });
+
+      setSaveQue(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  fetchData();
+}, [store.token]);
+
+const checkSaveQuestion = (id)=>{
+ const filterQue = saveQue.filter((questionId)=>{
+  return questionId.question_id === id
+ })
+//  console.log(filterQue[0].question_id)
+ if (filterQue[0]?.question_id === id ) {
+   return <AiFillHeart size={20} color="#c602db"/>
+ } else {
+  return <AiOutlineHeart size={20} color="#c602db" /> 
+ }
+}
+
   return (
     <div className="pb-12 md:pb-0">
       <div className="flex gap-10 items-center">
@@ -384,8 +433,8 @@ const Controller = ({
                   <>
                     <div className="flex justify-end">
                       <div className="flex gap-2">
-                        <div className="px-4 py-2 rounded-full border cursor-pointer border-fuchsia-500">
-                          <AiFillHeart />
+                        <div onClick={()=>saveQuestion(value._id)} className="px-4 py-2 rounded-full border cursor-pointer border-fuchsia-500">
+                          {checkSaveQuestion(value._id)}
                         </div>
                         <div className="flex items-center gap-[1px] right-2 shadow-sm px-4 py-2 rounded-full border border-fuchsia-500">
                           {value._id ===
