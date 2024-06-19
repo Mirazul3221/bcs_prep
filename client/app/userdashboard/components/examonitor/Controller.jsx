@@ -211,7 +211,7 @@ const Controller = ({
               ============================================= */}
         {questionsData?.map((value, index) => {
           return (
-            <div className="bg-gray-100 question_box relative mx-4 p-2 md:mx-0 md:p-6 rounded-md shadow-md border-2">
+            <div key={index} className="bg-gray-100 question_box relative mx-4 p-2 md:mx-0 md:p-6 rounded-md shadow-md border-2">
               <div
                 key={index}
                 className="md:mb-6 mb-10"
