@@ -3,7 +3,7 @@ import * as React from 'react';
 const SingleCard = ({project}) => {
   console.log(project.image)
   return (
-    <div className={`border-[#1b2c68a0] relative rounded-lg border w-full h-fit md:h-full overflow-hidden px-20`}>
+    <div className={`border-[#1b2c68a0] relative rounded-lg border w-full h-fit md:h-full overflow-hidden md:px-20`}>
     <div className="absolute top-0 left-0 w-full h-full -z-20">
       <img className='w-full h-full' src={project.image.src} alt='banner-img'/>
     </div>
@@ -64,7 +64,7 @@ const SingleCard = ({project}) => {
         </div>
         <div><span className="text-gray-400">{`};`}</span></div>
       </code>
-      <div className="md:w-1/2 flex justify-end">
+      <div className="md:w-1/2 md:flex justify-end hidden">
        <img className='w-2/3' src={`${project?.mobile?.src}`} alt="mobile-frame" />
       </div>
     </div>
