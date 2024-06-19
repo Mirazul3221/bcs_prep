@@ -10,12 +10,20 @@ import "../../components/cssfiles/scrolling_bar.css";
 import "../../components/cssfiles/marksmcq.css";
 import HTMLReactParser from "html-react-parser";
 import SearchEngin from "@/app/components/SearchEngin";
+import { AiFillHeart } from "react-icons/ai";
 // import correct from "@/public/mediaresource/music_button/right.mp3"
 //==================Import Audio Sound=============================
 // import correct from "../mediaresource/music_button/right.mp3";
 // import wrong from "../mediaresource/music_button/error.mp3";
 
-const Controller = ({ getLocalVal, getRobot, questionsData,grid,allQuestion,megaQuestions }) => {
+const Controller = ({
+  getLocalVal,
+  getRobot,
+  questionsData,
+  grid,
+  allQuestion,
+  megaQuestions,
+}) => {
   const [selectAll, setSelectAll] = useState(0);
   const [countReadingQuestion, setCountReadingQuestion] = useState(0);
   //Here is the statement about correct and inCorrect ans
@@ -24,7 +32,7 @@ const Controller = ({ getLocalVal, getRobot, questionsData,grid,allQuestion,mega
   //Here is thatement about negitive and positive marks
   const [positiveMarks, setPositiveMarks] = useState(0);
   const [negitiveMarks, setNegitiveMarks] = useState(0);
-  const [search,setSearch] = useState("")
+  const [search, setSearch] = useState("");
   const heyRobot = getRobot;
   //=======================================
   const volumeSound = localStorage.getItem("volume");
@@ -166,205 +174,239 @@ const Controller = ({ getLocalVal, getRobot, questionsData,grid,allQuestion,mega
     return null;
   }
 
-  console.log(megaQuestions)
+  console.log(megaQuestions);
   return (
     <div className="pb-12 md:pb-0">
-  <div className="flex gap-10 items-center">
-  <div className="flex items-center ml-6 md:ml-0 gap-2 text-gray-700">
-        <FaBookReader size={20} />
-        <h2 className="my-2 text-[11px] md:text-lg">
-          এই পর্যন্ত আপনি (
-          <span className="font-bold text-fuchsia-500">
-            {" " + countReadingQuestion + " "}
-          </span>
-          ) টি প্রশ্ন পড়ছেন।
-        </h2>
+      <div className="flex gap-10 items-center">
+        <div className="flex items-center ml-6 md:ml-0 gap-2 text-gray-700">
+          <FaBookReader size={20} />
+          <h2 className="my-2 text-[11px] md:text-lg">
+            এই পর্যন্ত আপনি (
+            <span className="font-bold text-fuchsia-500">
+              {" " + countReadingQuestion + " "}
+            </span>
+            ) টি প্রশ্ন পড়ছেন।
+          </h2>
+        </div>
+        <SearchEngin takeValue={setSearch} />
       </div>
-      <SearchEngin takeValue={setSearch}/>
-  </div>
 
-      <div className={`grid ${grid ==1 ? "md:grid-cols-1" : grid == 2 ? "md:grid-cols-2" : grid == 3 ? "md:grid-cols-3" :  grid == 4 ? "md:grid-cols-4" :  grid == 5 ?  "md:grid-cols-5" : ""} gap-4`}>
+      <div
+        className={`grid ${
+          grid == 1
+            ? "md:grid-cols-1"
+            : grid == 2
+            ? "md:grid-cols-2"
+            : grid == 3
+            ? "md:grid-cols-3"
+            : grid == 4
+            ? "md:grid-cols-4"
+            : grid == 5
+            ? "md:grid-cols-5"
+            : ""
+        } gap-4`}
+      >
         {/* =============================================
               ==================Justify Answer=============
               ============================================= */}
         {questionsData?.map((value, index) => {
           return (
-            <div
-              key={index}
-              className="question_box relative bg-gray-100 mx-4 p-2 md:mx-0 md:p-6 rounded-md shadow-md"
-            >
-              <div>
-                <div className="flex gap-2 bg-white px-4 py-2 rounded-md shadow-sm">
-                  <div>
-                    <div className="rounded-full w-fit p-[1px] flex justify-center items-center border-2 relative">
-                      <CiCircleQuestion color="gray" size={20} />
+            <div className="bg-gray-100 question_box relative mx-4 p-2 md:mx-0 md:p-6 rounded-md shadow-md border-2">
+              <div
+                key={index}
+                className="md:mb-6 mb-10"
+              >
+                <div>
+                  <div className="flex gap-2 bg-white px-4 py-2 rounded-md shadow-sm">
+                    <div>
+                      <div className="rounded-full w-fit p-[1px] flex justify-center items-center border-2 relative">
+                        <CiCircleQuestion color="gray" size={20} />
+                      </div>
                     </div>
+                    <h2 className="text-[12px] md:text-[15px]">
+                      {value.question}
+                    </h2>
                   </div>
-                  <h2 className="text-[12px] md:text-[15px]">
-                    {value.question}
+
+                  <h2 className="text-[9px] flex mt-2 md:text-[10px] ml-1 text-fuchsia-500">
+                    {value.examName ? (
+                      <span>
+                        {" "}
+                        <LiaClipboardListSolid color="gray" size={16} />
+                      </span>
+                    ) : value.otherExamName ? (
+                      <span>
+                        {" "}
+                        <LiaClipboardListSolid color="gray" size={16} />
+                      </span>
+                    ) : null}
+                    {value.examName}
+                    {value?.examSeassion && (
+                      <span className="text-[9px] md:text-[10px]">
+                        {value.examSeassion}
+                      </span>
+                    )}
+                    {value?.otherExamName && (
+                      <span className="text-[9px] md:text-[10px] ml-1">
+                        {value.otherExamName}
+                      </span>
+                    )}
                   </h2>
                 </div>
-
-                <h2 className="text-[9px] flex mt-2 md:text-[10px] ml-1 text-fuchsia-500">
-                   {value.examName ? <span> <LiaClipboardListSolid color="gray" size={16} /></span> : value.otherExamName?<span> <LiaClipboardListSolid color="gray" size={16} /></span> : null}
-                  {value.examName}
-                  {value?.examSeassion && (
-                    <span className="text-[9px] md:text-[10px]">
-                      {value.examSeassion}
-                    </span>
-                  )}
-                  {value?.otherExamName && (
-                    <span className="text-[9px] md:text-[10px] ml-1">
-                      {value.otherExamName}
-                    </span>
-                  )}
-                </h2>
-              </div>
-              <div
-                data-select={value.rightAns}
-                className="option_box space-y-2 mt-2"
-              >
-                <div className="relative">
-                  <div className="__option_number__ absolute left-5 border-2 border-white top-[5px] text-white rounded-full bg-gray-400 w-6 h-6 flex justify-center items-center">
-                    {value.subject === "বাংলা"
-                      ? "ক"
-                      : value.subject === "English"
-                      ? "A"
-                      : "ক"}
-                  </div>
-
-                  <p
-                    onClick={(e) => {
-                      checkAns(e, 1, index, value);
-                    }}
-                    className="__option_value__ cursor-pointer ml-8 w-[90%] rounded-full px-4 py-[5px] mx-5 text-[12px] md:text-[14px]"
-                  >
-                    {value.option_01}
-                  </p>
-                </div>
-                <div className="relative">
-                  <div className="__option_number__ absolute left-5 border-2 border-white top-[5px] text-white rounded-full bg-gray-400 w-6 h-6 flex justify-center items-center">
-                    {value.subject === "বাংলা"
-                      ? "ক"
-                      : value.subject === "English"
-                      ? "A"
-                      : "ক"}
-                  </div>
-
-                  <p
-                    onClick={(e) => {
-                      checkAns(e, 2, index, value);
-                    }}
-                    className="__option_value__ cursor-pointer ml-8 w-[90%] rounded-full px-4 py-[5px] mx-5 text-[12px] md:text-[14px]"
-                  >
-                    {value.option_02}
-                  </p>
-                </div>
-                <div className="relative">
-                  <div className="__option_number__ absolute left-5 border-2 border-white top-[5px] text-white rounded-full bg-gray-400 w-6 h-6 flex justify-center items-center">
-                    {value.subject === "বাংলা"
-                      ? "ক"
-                      : value.subject === "English"
-                      ? "A"
-                      : "ক"}
-                  </div>
-
-                  <p
-                    onClick={(e) => {
-                      checkAns(e, 3, index, value);
-                    }}
-                    className="__option_value__ cursor-pointer ml-8 w-[90%] rounded-full px-4 py-[5px] mx-5 text-[12px] md:text-[14px]"
-                  >
-                    {value.option_03}
-                  </p>
-                </div>
-                <div className="relative">
-                  <div className="__option_number__ absolute left-5 border-2 border-white top-[5px] text-white rounded-full bg-gray-400 w-6 h-6 flex justify-center items-center">
-                    {value.subject === "বাংলা"
-                      ? "ক"
-                      : value.subject === "English"
-                      ? "A"
-                      : "ক"}
-                  </div>
-
-                  <p
-                    onClick={(e) => {
-                      checkAns(e, 4, index, value);
-                    }}
-                    className="__option_value__ cursor-pointer ml-8 w-[90%] rounded-full px-4 py-[5px] mx-5 text-[12px] md:text-[14px]"
-                  >
-                    {value.option_04}
-                  </p>
-                </div>
-              </div>
-              {heyRobot === "on" ? (
-                <></>
-              ) : (
-                <>
-                  <div className="flex justify-end">
-                    <div className="ans text-right w-8 h-8 flex justify-center items-center font-semibold text-gray-500 rounded-full border-2 border-gray-500">
-                      {correctAns(value.rightAns, value.subject)}
+                <div
+                  data-select={value.rightAns}
+                  className="option_box space-y-2 mt-2"
+                >
+                  <div className="relative">
+                    <div className="__option_number__ absolute left-5 border-2 border-white top-[5px] text-white rounded-full bg-gray-400 w-6 h-6 flex justify-center items-center">
+                      {value.subject === "বাংলা"
+                        ? "ক"
+                        : value.subject === "English"
+                        ? "A"
+                        : "ক"}
                     </div>
-                  </div>
-                </>
-              )}
 
-              {/* ==================Adding Explanation with click===================== */}
-              {heyRobot === "on" ? (
-                <></>
-              ) : (
-                <div
-                  className={`explanation relative hidden_scroll pt-2 mt-4 px-4 md:px-12 transform duration-500 bg-white max-h-[40vh] overflow-y-scroll`}
-                >
-                  <p className="text-[12px] p-2 md:p-10">
-                    {HTMLReactParser(value.description)}
-                  </p>
-                </div>
-              )}
-
-              {value.description.length > 0 ? (
-                <div
-                  className={`explanation relative hidden_scroll pt-2 hidden mt-4 px-4 md:px-12 transform scale-0 duration-500 bg-white max-h-[40vh] overflow-y-scroll`}
-                >
-                  <div
-                    onClick={(e) => {
-                      removeExp(e);
-                    }}
-                    className="fixed cursor-pointer w-4 h-4 top-2 right-2 md:right-8 flex justify-center items-center rounded-full bg-rose-300/50"
-                  >
-                    <RxCross2 color="red" size={10} />
+                    <p
+                      onClick={(e) => {
+                        checkAns(e, 1, index, value);
+                      }}
+                      className="__option_value__ cursor-pointer ml-8 w-[90%] rounded-full px-4 py-[5px] mx-5 text-[12px] md:text-[14px]"
+                    >
+                      {value.option_01}
+                    </p>
                   </div>
-                  <div>
-                    <p className="text-[12px] mt-2">
-                      {HTMLReactParser(value.description)}
+                  <div className="relative">
+                    <div className="__option_number__ absolute left-5 border-2 border-white top-[5px] text-white rounded-full bg-gray-400 w-6 h-6 flex justify-center items-center">
+                      {value.subject === "বাংলা"
+                        ? "ক"
+                        : value.subject === "English"
+                        ? "A"
+                        : "ক"}
+                    </div>
+
+                    <p
+                      onClick={(e) => {
+                        checkAns(e, 2, index, value);
+                      }}
+                      className="__option_value__ cursor-pointer ml-8 w-[90%] rounded-full px-4 py-[5px] mx-5 text-[12px] md:text-[14px]"
+                    >
+                      {value.option_02}
+                    </p>
+                  </div>
+                  <div className="relative">
+                    <div className="__option_number__ absolute left-5 border-2 border-white top-[5px] text-white rounded-full bg-gray-400 w-6 h-6 flex justify-center items-center">
+                      {value.subject === "বাংলা"
+                        ? "ক"
+                        : value.subject === "English"
+                        ? "A"
+                        : "ক"}
+                    </div>
+
+                    <p
+                      onClick={(e) => {
+                        checkAns(e, 3, index, value);
+                      }}
+                      className="__option_value__ cursor-pointer ml-8 w-[90%] rounded-full px-4 py-[5px] mx-5 text-[12px] md:text-[14px]"
+                    >
+                      {value.option_03}
+                    </p>
+                  </div>
+                  <div className="relative">
+                    <div className="__option_number__ absolute left-5 border-2 border-white top-[5px] text-white rounded-full bg-gray-400 w-6 h-6 flex justify-center items-center">
+                      {value.subject === "বাংলা"
+                        ? "ক"
+                        : value.subject === "English"
+                        ? "A"
+                        : "ক"}
+                    </div>
+
+                    <p
+                      onClick={(e) => {
+                        checkAns(e, 4, index, value);
+                      }}
+                      className="__option_value__ cursor-pointer ml-8 w-[90%] rounded-full px-4 py-[5px] mx-5 text-[12px] md:text-[14px]"
+                    >
+                      {value.option_04}
                     </p>
                   </div>
                 </div>
-              ) : (
-                ""
-              )}
+                {heyRobot === "on" ? (
+                  <></>
+                ) : (
+                  <>
+                    <div className="flex justify-end">
+                      <div className="ans text-right w-8 h-8 flex justify-center items-center font-semibold text-gray-500 rounded-full border-2 border-gray-500">
+                        {correctAns(value.rightAns, value.subject)}
+                      </div>
+                    </div>
+                  </>
+                )}
 
-              {heyRobot !== "on" ? (
-                ""
-              ) : (
-                <>
-                  <div className="absolute bottom-2 flex items-center gap-[1px] right-2 shadow-sm">
-                    {value._id ===
-                    getReadQuestion?.find((id) => id === value._id) ? (
-                      <PiEye color="#ff0037" />
-                    ) : (
-                      <PiEyeSlash color="#a8a8a8" />
-                    )}
-                    <h2
-                      className={`text-[8px] text-rose-500 md:text-[10px]  rounded-full ${
-                        countReadTime(value._id) === null ? "" : ""
-                      } flex justify-center items-center`}
-                    >
-                      {countReadTime(value._id)}
-                    </h2>
+                {/* ==================Adding Explanation with click===================== */}
+                {heyRobot === "on" ? (
+                  <></>
+                ) : (
+                  <div
+                    className={`explanation relative hidden_scroll pt-2 mt-4 px-4 md:px-12 transform duration-500 bg-white max-h-[40vh] overflow-y-scroll`}
+                  >
+                    <p className="text-[12px] p-2 md:p-10">
+                      {HTMLReactParser(value.description)}
+                    </p>
                   </div>
-                </>
-              )}
+                )}
+
+                {value.description.length > 0 ? (
+                  <div
+                    className={`explanation relative hidden_scroll pt-2 hidden mt-4 px-4 md:px-12 transform scale-0 duration-500 max-h-[40vh] overflow-y-scroll`}
+                  >
+                    <div
+                      onClick={(e) => {
+                        removeExp(e);
+                      }}
+                      className="fixed cursor-pointer w-4 h-4 top-2 right-2 md:right-8 flex justify-center items-center rounded-full bg-rose-300/50"
+                    >
+                      <RxCross2 color="red" size={10} />
+                    </div>
+                    <div>
+                      <p className="text-[12px] mt-2">
+                        {HTMLReactParser(value.description)}
+                      </p>
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
+              <div className="absolute bottom-2 w-full -ml-6 md:px-10">
+              {heyRobot !== "on" ? (
+                  ""
+                ) : (
+                  <>
+                    <div className="flex justify-end">
+                      <div className="flex gap-2">
+                        <div className="px-4 py-2 rounded-full border cursor-pointer border-fuchsia-500">
+                          <AiFillHeart />
+                        </div>
+                        <div className="flex items-center gap-[1px] right-2 shadow-sm px-4 py-2 rounded-full border border-fuchsia-500">
+                          {value._id ===
+                          getReadQuestion?.find((id) => id === value._id) ? (
+                            <PiEye color="#ff0037" />
+                          ) : (
+                            <PiEyeSlash color="#a8a8a8" />
+                          )}
+                          <h2
+                            className={`text-[8px] text-rose-500 md:text-[10px]  rounded-full ${
+                              countReadTime(value._id) === null ? "" : ""
+                            } flex justify-center items-center`}
+                          >
+                            {countReadTime(value._id)}
+                          </h2>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
           );
         })}
