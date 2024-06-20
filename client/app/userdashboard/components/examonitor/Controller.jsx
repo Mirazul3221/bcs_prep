@@ -184,8 +184,12 @@ const Controller = ({
   //=====================Questions save intigration=================
   const [saveQue,setSaveQue] = useState([])
   const [saveQLoader,setSaveQueLoader] = useState(false)
+  const [justifyid,setJustifyId] = useState("")
+  // console.log(justifyid)
 const { store } = useContext(storeContext);
-const saveQuestion =async (id) => {
+const saveQuestion =async (id,i) => {
+  const justifiedId = questionsData[i]._id;
+  setJustifyId(justifiedId)
   try {
     setSaveQueLoader(true)
     const { data } = await axios.post(`${baseurl}/savequestions/create`,{question_id:id}, {
@@ -439,8 +443,8 @@ const checkSaveQuestion = (id)=>{
                   <>
                     <div className="flex justify-end">
                       <div className="flex gap-2">
-                        <div onClick={()=>saveQuestion(value._id)} className="px-4 py-2 rounded-full border cursor-pointer border-fuchsia-500">
-                         {saveQLoader ? <Image className="w-6" src={loveAnim} alt="love"/> : checkSaveQuestion(value._id)}
+                        <div onClick={()=>saveQuestion(value._id,index)} className="px-4 py-2 rounded-full border cursor-pointer border-fuchsia-500">
+                         {saveQLoader && justifyid == value._id ? <Image className="w-6" src={loveAnim} alt="love"/> : checkSaveQuestion(value._id)}
                         </div>
                         <div className="flex items-center gap-[1px] right-2 shadow-sm px-4 py-2 rounded-full border border-fuchsia-500">
                           {value._id ===
