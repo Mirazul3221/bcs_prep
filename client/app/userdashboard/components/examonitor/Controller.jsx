@@ -181,9 +181,10 @@ const Controller = ({
     return null;
   }
 
-  //=====================Questions save intigration=================
+  //=====================Questions save intigration and show description with point=================
+  const [showPoint1, setShowPoint1] = useState(false);
   const [showPoint, setShowPoint] = useState(false);
-  const [showPointDesc, setShowPointDesc] = useState("");
+  const [showPointDesc, setShowPointDesc] = useState([]);
   const [saveQue, setSaveQue] = useState([]);
   const [saveQLoader, setSaveQueLoader] = useState(false);
   const [justifyid, setJustifyId] = useState("");
@@ -241,7 +242,7 @@ const Controller = ({
   };
   //===================================================
   return (
-    <div className="pb-12 md:pb-0">
+    <div className={`pb-12 md:pb-0  ${showPoint1 ? "fixed z-10" : ""}`}>
       <div className="flex gap-10 items-center">
         <div className="flex items-center ml-6 md:ml-0 gap-2 text-gray-700">
           <FaBookReader size={20} />
@@ -278,7 +279,7 @@ const Controller = ({
           return (
             <div
               key={index}
-              className="bg-gray-100 question_box relative p-2 md:mx-0 md:p-6 rounded-md shadow-md border-2"
+              className={`bg-gray-100 question_box relative p-2 md:mx-0 md:p-6 rounded-md shadow-md border-2`}
             >
               <div key={index} className="md:mb-6 mb-10">
                 <div>
@@ -456,8 +457,11 @@ const Controller = ({
                             {value.description?.length > 0 && (
                               <div
                                 onClick={() => {
-                                  setShowPoint(true),
-                                    setShowPointDesc(value.description);
+                                    setShowPointDesc(value);
+                                    setShowPoint1(true)
+                                    setTimeout(() => {
+                                      setShowPoint(true)
+                                    }, 50);
                                 }}
                                 className="details px-4 py-2 rounded-full border cursor-pointer border-fuchsia-500"
                               >
@@ -499,16 +503,37 @@ const Controller = ({
                   </>
                 )}
                 {/* ==================Adding Explanation with click===================== */}
-                {showPoint && (
-                  <div className="w-screen fixed top-0 left-0 h-screen bg-gray-500/5 flex z-50 justify-center items-center p-28">
-                    <div className="rounded-md bg-white text-2xl w-fit h-fit p-20">
+                {showPoint1 && (
+                  <div className="w-screen fixed top-0 left-0 h-screen duration-500 bg-gray-500/5 flex z-50 justify-center items-center p-4 md:p-0">
+                    <div className={`${showPoint ? "duration-500 md:translate-x-[20%]" : " duration-500 md:translate-x-[210%]"} duration-500 rounded-md md:rounded-2xl bg-white md:h-screen md:p-20 px-4 py-10 relative md:w-9/12 md:max-h-[99vh] max-h-[90vh] overflow-auto`}>
                       <span
-                        onClick={() => setShowPoint(false)}
-                        className="cursor-pointer"
+                        onClick={() => {setTimeout(() => {
+                          setShowPoint1(false)
+                        }, 50);
+                        setShowPoint(false)
+                      }}
+                        className="cursor-pointer absolute top-5 left-5"
                       >
                         <RxCross2 size={30} />
                       </span>
-                      <p>{HTMLReactParser(showPointDesc)}</p>
+                     <div className="sub_details border-b-2 py-2 text-gray-500">
+                     <h2><span className="font-bold text-gray-700">Subject</span> : {showPointDesc.subject}</h2>
+                     <h3> <span className="font-bold text-gray-700">Topic</span>  : {showPointDesc.topic}</h3>
+                     <h4> <span className="font-bold text-gray-700">Previous Exam</span>  : {showPointDesc?.otherExamName}</h4>
+                     </div>
+                     <div className="question py-2 text-gray-500 border-b-2 mb-4">
+                           <h4 className="text-lg mb-2 font-bold">Question : {showPointDesc?.question}</h4>
+                          <div className="md:grid grid-cols-2 gap-6">
+                          <h4> <span className="font-bold text-gray-700">A</span> : {showPointDesc?.option_01}</h4>
+                           <h4><span className="font-bold text-gray-700">B</span> : {showPointDesc?.option_02}</h4>
+                           <h4><span className="font-bold text-gray-700">C</span> : {showPointDesc?.option_03}</h4>
+                           <h4><span className="font-bold text-gray-700">D</span>: {showPointDesc?.option_04}</h4>
+
+                           <h5 className="font-bold text-gray-700"><span>Answer</span>:  {showPointDesc?.rightAns == 1 ? "A" :showPointDesc?.rightAns == 2 ? "B" : showPointDesc?.rightAns == 3 ? "C" : showPointDesc?.rightAns == 4 ? "D" : ""}</h5>
+                          </div>
+
+                     </div>
+                      <p className="">{HTMLReactParser(showPointDesc.description)}</p>
                     </div>
                   </div>
                 )}
