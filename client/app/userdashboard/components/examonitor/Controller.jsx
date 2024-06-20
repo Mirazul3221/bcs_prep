@@ -1,10 +1,11 @@
 "use client";
 import React, { useContext, useEffect, useState } from "react";
-import loveAnim from "@/public/love.gif"
+import loveAnim from "@/public/love.gif";
 import { CiCircleQuestion } from "react-icons/ci";
 import { LiaClipboardListSolid } from "react-icons/lia";
-import { FaBookReader } from "react-icons/fa";
+import { LiaHandPointUpSolid } from "react-icons/lia";
 import { RxCross2 } from "react-icons/rx";
+import { FaBookReader } from "react-icons/fa";
 import { PiEye } from "react-icons/pi";
 import { PiEyeSlash } from "react-icons/pi";
 import "../../components/cssfiles/scrolling_bar.css";
@@ -86,10 +87,10 @@ const Controller = ({
           //   }
           setWrongAns(wrongAns + 1);
           setTimeout(() => {
-            tergetExp.classList.add("scale-110");
-            tergetExp.classList.remove("scale-0");
+            tergetExp?.classList.add("scale-110");
+            tergetExp?.classList.remove("scale-0");
           }, 100);
-          tergetExp.classList.remove("hidden");
+          tergetExp?.classList.remove("hidden");
           setSelectAll(selectAll + 1);
           setNegitiveMarks(negitiveMarks + 0.25);
         }
@@ -180,60 +181,65 @@ const Controller = ({
     return null;
   }
 
-
   //=====================Questions save intigration=================
-  const [saveQue,setSaveQue] = useState([])
-  const [saveQLoader,setSaveQueLoader] = useState(false)
-  const [justifyid,setJustifyId] = useState("")
+  const [showPoint, setShowPoint] = useState(false);
+  const [showPointDesc, setShowPointDesc] = useState("");
+  const [saveQue, setSaveQue] = useState([]);
+  const [saveQLoader, setSaveQueLoader] = useState(false);
+  const [justifyid, setJustifyId] = useState("");
   // console.log(justifyid)
-const { store } = useContext(storeContext);
-const saveQuestion =async (id,i) => {
-  const justifiedId = questionsData[i]._id;
-  setJustifyId(justifiedId)
-  try {
-    setSaveQueLoader(true)
-    const { data } = await axios.post(`${baseurl}/savequestions/create`,{question_id:id}, {
-      headers: {
-        Authorization: `Bearer ${store.token}`,
-      },
-    });
-    setSaveQueLoader(false)
-    console.log(data)
-  } catch (error) {
-    setSaveQueLoader(false)
-    console.log(error);
-  }
-}
-
-useEffect(() => {
-  async function fetchData() {
+  const { store } = useContext(storeContext);
+  const saveQuestion = async (id, i) => {
+    const justifiedId = questionsData[i]._id;
+    setJustifyId(justifiedId);
     try {
-      const { data } = await axios.get(`${baseurl}/savequestions/all`, {
-        headers: {
-          Authorization: `Bearer ${store.token}`,
-        },
-      });
-
-      setSaveQue(data);
+      setSaveQueLoader(true);
+      const { data } = await axios.post(
+        `${baseurl}/savequestions/create`,
+        { question_id: id },
+        {
+          headers: {
+            Authorization: `Bearer ${store.token}`,
+          },
+        }
+      );
+      setSaveQueLoader(false);
+      console.log(data);
     } catch (error) {
+      setSaveQueLoader(false);
       console.log(error);
     }
-  }
-  fetchData();
-}, [store.token,saveQLoader]);
+  };
 
-const checkSaveQuestion = (id)=>{
- const filterQue = saveQue.filter((questionId)=>{
-  return questionId.question_id === id
- })
-//  console.log(filterQue[0].question_id)
- if (filterQue[0]?.question_id === id ) {
-   return <AiFillHeart size={20} color="#c602db"/>
- } else {
-  return <AiOutlineHeart size={20} color="#c602db" /> 
- }
-}
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const { data } = await axios.get(`${baseurl}/savequestions/all`, {
+          headers: {
+            Authorization: `Bearer ${store.token}`,
+          },
+        });
 
+        setSaveQue(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, [store.token, saveQLoader]);
+
+  const checkSaveQuestion = (id) => {
+    const filterQue = saveQue.filter((questionId) => {
+      return questionId.question_id === id;
+    });
+    //  console.log(filterQue[0].question_id)
+    if (filterQue[0]?.question_id === id) {
+      return <AiFillHeart size={20} color="#c602db" />;
+    } else {
+      return <AiOutlineHeart size={20} color="#c602db" />;
+    }
+  };
+  //===================================================
   return (
     <div className="pb-12 md:pb-0">
       <div className="flex gap-10 items-center">
@@ -270,11 +276,11 @@ const checkSaveQuestion = (id)=>{
               ============================================= */}
         {questionsData?.map((value, index) => {
           return (
-            <div key={index} className="bg-gray-100 question_box relative mx-4 p-2 md:mx-0 md:p-6 rounded-md shadow-md border-2">
-              <div
-                key={index}
-                className="md:mb-6 mb-10"
-              >
+            <div
+              key={index}
+              className="bg-gray-100 question_box relative p-2 md:mx-0 md:p-6 rounded-md shadow-md border-2"
+            >
+              <div key={index} className="md:mb-6 mb-10">
                 <div>
                   <div className="flex gap-2 bg-white px-4 py-2 rounded-md shadow-sm">
                     <div>
@@ -400,8 +406,8 @@ const checkSaveQuestion = (id)=>{
                     </div>
                   </>
                 )}
-
                 {/* ==================Adding Explanation with click===================== */}
+
                 {heyRobot === "on" ? (
                   <></>
                 ) : (
@@ -437,14 +443,41 @@ const checkSaveQuestion = (id)=>{
                 )}
               </div>
               <div className="absolute bottom-2 w-full -ml-6 md:px-10">
-              {heyRobot !== "on" ? (
+                {heyRobot !== "on" ? (
                   ""
                 ) : (
                   <>
                     <div className="flex justify-end">
                       <div className="flex gap-2">
-                        <div onClick={()=>saveQuestion(value._id,index)} className="px-4 py-2 rounded-full border cursor-pointer border-fuchsia-500">
-                         {saveQLoader && justifyid == value._id ? <Image className="w-6" src={loveAnim} alt="love"/> : checkSaveQuestion(value._id)}
+                        {heyRobot !== "on" ? (
+                          ""
+                        ) : (
+                          <>
+                            {value.description?.length > 0 && (
+                              <div
+                                onClick={() => {
+                                  setShowPoint(true),
+                                    setShowPointDesc(value.description);
+                                }}
+                                className="details px-4 py-2 rounded-full border cursor-pointer border-fuchsia-500"
+                              >
+                                <LiaHandPointUpSolid
+                                  size={20}
+                                  color="#c602db"
+                                />
+                              </div>
+                            )}
+                          </>
+                        )}
+                        <div
+                          onClick={() => saveQuestion(value._id, index)}
+                          className="px-4 py-2 rounded-full border cursor-pointer border-fuchsia-500"
+                        >
+                          {saveQLoader && justifyid == value._id ? (
+                            <Image className="w-6" src={loveAnim} alt="love" />
+                          ) : (
+                            checkSaveQuestion(value._id)
+                          )}
                         </div>
                         <div className="flex items-center gap-[1px] right-2 shadow-sm px-4 py-2 rounded-full border border-fuchsia-500">
                           {value._id ===
@@ -465,10 +498,30 @@ const checkSaveQuestion = (id)=>{
                     </div>
                   </>
                 )}
+                {/* ==================Adding Explanation with click===================== */}
+                {showPoint && (
+                  <div className="w-screen fixed top-0 left-0 h-screen bg-gray-500/5 flex z-50 justify-center items-center p-28">
+                    <div className="rounded-md bg-white text-2xl w-fit h-fit p-20">
+                      <span
+                        onClick={() => setShowPoint(false)}
+                        className="cursor-pointer"
+                      >
+                        <RxCross2 size={30} />
+                      </span>
+                      <p>{HTMLReactParser(showPointDesc)}</p>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           );
         })}
+        {/* {heyRobot !== "on" ? "" : <>
+           {
+            showPoint && () 
+           }
+        </>} */}
+
         {wrongAns > 0 ? (
           <div className="fixed opacity-60 right-2 md:right-10 bottom-12 bg-rose-300 w-10 h-10 p-[12px] rounded-full flex items-center justify-center">
             {wrongAns}
