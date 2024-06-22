@@ -4,14 +4,21 @@ import { UpdateSavequestionDto } from './dto/update-savequestion.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { SaveQuestions, savequestion_model } from './schema/savequestions.schems';
 import mongoose from 'mongoose';
+import { Reader, user_model } from 'src/auth/schema/auth.schema';
 
 @Injectable()
 export class SavequestionsService {
-  constructor(    @InjectModel(savequestion_model)
-  private saveQuestions: mongoose.Model<SaveQuestions>,){}
+  constructor(
+    @InjectModel(savequestion_model)
+    // @InjectModel(user_model)
+  private saveQuestions: mongoose.Model<SaveQuestions>,
+  // private userModel : mongoose.Model <Reader>
+){}
  async create(createSavequestionDto: CreateSavequestionDto,req) {
+  const userId = req.user._id;
+    // console.log()
     const {question_id} = createSavequestionDto
-    const existQuestion = await this.saveQuestions.findOne({question_id:question_id})
+    const existQuestion = await this.saveQuestions.findOne({reader_id:userId, question_id:question_id})
     if (existQuestion) {
       throw new ConflictException('Question already exist ');
     } else {
