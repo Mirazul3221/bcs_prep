@@ -65,6 +65,7 @@ const UserDashboard = () => {
           </h2>
           <SearchEngin takeValue={setSearch}/>
       </div>
+           <Link href="./userdashboard/myfavourite"><h2 className="w-fit py-2 px-5 bg-fuchsia-500 rounded-full text-white">My Favourite List</h2></Link>
           <Layout />
         </div>
       </ProtectRoute>

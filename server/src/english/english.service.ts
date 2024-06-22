@@ -52,9 +52,9 @@ private englishQuestionModel: mongoose.Model<English>,){}
     return `This action removes a #${id} bangla`;
   }
 
-  async multipleQue (){
-    const objis = ['6658affe887a446b95f8f1f5','665c8370dd2891bb02503f0d','665cac0dd39bdea364dc6406']
-   const test =await this.englishQuestionModel.find({_id:objis})
+  async multipleQue (allQuestionsId){
+    // const objis = ['6658affe887a446b95f8f1f5','665c8370dd2891bb02503f0d','665cac0dd39bdea364dc6406']
+   const test =await this.englishQuestionModel.find({_id:allQuestionsId})
    return test
   }
 }

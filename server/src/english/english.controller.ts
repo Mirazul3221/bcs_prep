@@ -21,9 +21,9 @@ export class EnglishController {
     return await this.englishService.findAll();
   }
 
-  @Get('/q')
-  multipleQue() {
-    return this.englishService.multipleQue();
+  @Post('myallfavouritequestions')
+  multipleQue(@Body() allQuestionsId) {
+    return this.englishService.multipleQue(allQuestionsId);
   }
 
   @Get('find/:id')
