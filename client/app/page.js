@@ -142,8 +142,8 @@ const dalali = [
 const Card = ()=>{
   return <div className="bg-white md:p-28 grid grid-cols-2 gap-5">
      {
-      dalali.map((dalal)=>{
-       return  <div className="bg-[#fcb100] py-2 text-center text-white rounded-xl space-y-2">
+      dalali.map((dalal,i)=>{
+       return  <div key={i} className="bg-[#fcb100] py-2 text-center text-white rounded-xl space-y-2">
              <h2 className="text-black font-bold text-2xl">{dalal.a}</h2>
              <h2 className="font-bold">{dalal.b}</h2>
              <h2 className="">{dalal.c}</h2>

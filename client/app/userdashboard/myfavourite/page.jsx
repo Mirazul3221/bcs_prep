@@ -5,7 +5,7 @@ import storeContext from '@/app/global/createContex';
 import axios from 'axios';
 import Monitor from '../components/examonitor/Monitor';
 
-const page = () => {
+const Page = () => {
     const { store } = useContext(storeContext);
     const [allQuestionId,setAllQuestionId] = useState()
     const [allQuestion,setAllQuestion] = useState([])
@@ -65,4 +65,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
