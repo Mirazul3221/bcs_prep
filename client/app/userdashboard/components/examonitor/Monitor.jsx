@@ -7,7 +7,7 @@ import { devider } from "@/app/subject/conponents/devider";
 import PaginationNumber from "./PaginationNumber";
 
 
-const Monitor = ({ questions,megaQuestions }) => {
+const Monitor = ({ questions,megaQuestions,isSave }) => {
   const [navigate, setNavigate] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(20);
@@ -153,6 +153,7 @@ const Monitor = ({ questions,megaQuestions }) => {
                         grid={grid}
                         allQuestion={questions}
                         megaQuestions={megaQuestions}
+                        isSave={isSave}
                       />
                     </div>
                   );
