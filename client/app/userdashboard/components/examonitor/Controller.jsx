@@ -344,10 +344,10 @@ const Controller = ({
                   <div className="relative">
                     <div className="__option_number__ absolute left-5 border-2 border-white top-[5px] text-white rounded-full bg-gray-400 w-6 h-6 flex justify-center items-center">
                       {value.subject === "বাংলা"
-                        ? "ক"
+                        ? "খ"
                         : value.subject === "English"
-                        ? "A"
-                        : "ক"}
+                        ? "B"
+                        : "খ"}
                     </div>
 
                     <p
@@ -362,10 +362,10 @@ const Controller = ({
                   <div className="relative">
                     <div className="__option_number__ absolute left-5 border-2 border-white top-[5px] text-white rounded-full bg-gray-400 w-6 h-6 flex justify-center items-center">
                       {value.subject === "বাংলা"
-                        ? "ক"
+                        ? "গ"
                         : value.subject === "English"
-                        ? "A"
-                        : "ক"}
+                        ? "C"
+                        : "গ"}
                     </div>
 
                     <p
@@ -380,10 +380,10 @@ const Controller = ({
                   <div className="relative">
                     <div className="__option_number__ absolute left-5 border-2 border-white top-[5px] text-white rounded-full bg-gray-400 w-6 h-6 flex justify-center items-center">
                       {value.subject === "বাংলা"
-                        ? "ক"
+                        ? "ঘ"
                         : value.subject === "English"
-                        ? "A"
-                        : "ক"}
+                        ? "D"
+                        : "ঘ"}
                     </div>
 
                     <p
