@@ -17,7 +17,7 @@ import ProtectRoute from "@/app/global/ProtectRoute";
 import { devider } from "../conponents/devider";
 import QuestionLoader from "../conponents/QuestionLoader";
 const Page = () => {
-  // const [navValue, setNaveValue] = useState("home");
+// const [navValue, setNaveValue] = useState("home");
   const [title, setTitle] = useState("");
   const [headTitle, setHedTitle] = useState("");
   const [getTopicValue, setGetTopicValue] = useState("");
@@ -53,11 +53,11 @@ const Page = () => {
   const filterData = filterValue(getTopicValue);
   //==============End API====================
 
-    
+  // const suffeArrey = randomArrrey(filterData)
+  // console.log(suffeArrey)
+  // console.log(filterData)
+
     // filterData?.sort((a, b) => 0.5 - Math.random())//
-
-  
-
   const getQuestion = devider(filterData, 100);
   //==========================
   

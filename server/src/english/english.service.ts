@@ -34,7 +34,28 @@ private englishQuestionModel: mongoose.Model<English>,){}
   }
 
   async findAll() {
-    return await this.englishQuestionModel.find().sort({createdAt:-1});
+
+  const myQuestions = await this.englishQuestionModel.find().sort({createdAt:-1});
+    
+  const shuffle = function (array){
+    let randomArr = [];
+   let indexArr = []
+   let i = 0
+   while (i < array.length) {
+     let randomNumber = Math.floor(Math.random() *  array.length)
+     if (!indexArr.includes(randomNumber)) {
+        randomArr.push(array[randomNumber])
+        indexArr.push(randomNumber)
+        i++
+     }
+   }
+ return(randomArr)//
+
+}
+
+const randQuestion = shuffle(myQuestions)
+console.log(randQuestion)
+return randQuestion
   }
 
   async findOne(id: string) {
