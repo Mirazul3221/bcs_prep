@@ -137,7 +137,7 @@ const Monitor = ({ questions,megaQuestions,isSave }) => {
               </div>
             </div>
             <div>
-              <div className={`flex`}>
+              <div className={`flex md:pb-20 pb-4`}>
                 {devidedQuestions.question.map((item, i) => {
                   return (
                     <div
@@ -159,13 +159,15 @@ const Monitor = ({ questions,megaQuestions,isSave }) => {
                   );
                 })}
               </div>
-              <div className="fixed left-[50%] md:left-0 -translate-x-[50%] md:translate-x-0 md:right-[120px] bottom-1 md:bottom-2 py-3 w-full">
-                <PaginationNumber
+              <div className="fixed bottom-0 w-full md:px-40 py-3 md:py-5">
+               <div className="w-full flex justify-center md:justify-end items-center">
+               <PaginationNumber
                   totalPost={questions.length}
                   postPerPage={itemsPerPage}
                   getPageNumber={getPageNumber}
                   scrollToTop={scrollToTop}
                 />
+               </div>
               </div>
             </div>
           </div>

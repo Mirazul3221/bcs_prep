@@ -607,14 +607,14 @@ const Controller = ({
         </>} */}
 
         {wrongAns > 0 ? (
-          <div className="fixed opacity-60 right-2 md:right-10 bottom-12 bg-rose-300 w-10 h-10 p-[12px] rounded-full flex items-center justify-center">
+          <div className="fixed opacity-60 right-2 md:right-14 bottom-[85px] md:bottom-12 bg-rose-300 w-10 h-10 p-[12px] rounded-full flex items-center justify-center">
             {wrongAns}
           </div>
         ) : (
           ""
         )}
         {correctMcq > 0 ? (
-          <div className="fixed opacity-60 right-2 md:right-[80px] bottom-20 md:bottom-12 w-10 h-10 p-[12px] bg-green-300 rounded-full flex items-center justify-center">
+          <div className="fixed opacity-60 right-2 md:right-14 bottom-12 md:bottom-20 w-10 h-10 p-[12px] bg-green-300 rounded-full flex items-center justify-center">
             {correctMcq}
           </div>
         ) : (

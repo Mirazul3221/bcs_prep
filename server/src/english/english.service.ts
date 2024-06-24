@@ -54,7 +54,6 @@ private englishQuestionModel: mongoose.Model<English>,){}
 }
 
 const randQuestion = shuffle(myQuestions)
-console.log(randQuestion)
 return randQuestion
   }
 
