@@ -16,9 +16,13 @@ export class EnglishController {
     return await this.englishService.create(createEnglishDto);
   }
 
-  @Get('/find')
-  async findAll() {
-    return await this.englishService.findAll();
+  @Get('/user/find')
+  async findAllForUser() {
+    return await this.englishService.findAllForUser();
+  }
+  @Get('/assist/find')
+  async findAllForAssist() {
+    return await this.englishService.findAllForAssist();
   }
 
   @Post('myallfavouritequestions')

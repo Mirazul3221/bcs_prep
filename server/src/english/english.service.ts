@@ -33,9 +33,9 @@ private englishQuestionModel: mongoose.Model<English>,){}
      return await {msg:"Question added success"};
   }
 
-  async findAll() {
+  async findAllForUser() {
 
-  const myQuestions = await this.englishQuestionModel.find().sort({createdAt:-1});
+  const myQuestions = await this.englishQuestionModel.find();
     
   const shuffle = function (array){
     let randomArr = [];
@@ -55,6 +55,10 @@ private englishQuestionModel: mongoose.Model<English>,){}
 
 const randQuestion = shuffle(myQuestions)
 return randQuestion
+  }
+
+ async findAllForAssist(){
+     return await this.englishQuestionModel.find().sort({createdAt:-1})
   }
 
   async findOne(id: string) {

@@ -30,7 +30,7 @@ const Page = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const { data } = await axios.get(`${baseurl}/english/find`, {
+        const { data } = await axios.get(`${baseurl}/english/user/find`, {
           headers: {
             Authorization: `Bearer ${store.token}`,
           },
