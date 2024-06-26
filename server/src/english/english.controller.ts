@@ -30,7 +30,7 @@ export class EnglishController {
     return this.englishService.multipleQue(allQuestionsId);
   }
 
-  @Get('find/:id')
+  @Get('assist/find/:id')
   @UseGuards(AuthGuard())
   async findOne(@Param('id') id: string) {
     return await this.englishService.findOne(id);
