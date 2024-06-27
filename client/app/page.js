@@ -15,6 +15,8 @@ import Projects from "./components/Cards";
 import Image from "next/image";
 import manymobile from '@/public/banner/multiplemobile.png'
 import { FaFacebook, FaLinkedin, FaSquareWhatsapp } from "react-icons/fa6";
+import { Banner } from "./adsterra/Banner";
+import Script from "next/script";
 export default function Home() {
   const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
   
@@ -55,6 +57,8 @@ export default function Home() {
           <div className="bg-white flex justify-center py-10">
             <Image src={manymobile} alt="multiple mobile"/>
           </div>
+          <Banner/>
+          <Script type="text/javascript" src="//pl23641250.highrevenuenetwork.com/9d/dd/06/9ddd062e14b034f4d6043be8bf0a1f91.js"/>
           <div className="footer flex justify-between items-center py-4 md:px-20 px-4 bg-gray-300">
                 <h2>
                 © Copyright 2024 | All Rights Reserved | Powered by Mirazul islam

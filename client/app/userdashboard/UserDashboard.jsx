@@ -12,6 +12,8 @@ import SearchEngin from "../components/SearchEngin";
 import { useRouter } from "next/navigation";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
+import { Banner } from "../adsterra/Banner";
+import Script from "next/script";
 
 // import Image from "next/image";
 // import logo from "@/public/bcs-logo.png"
@@ -52,6 +54,7 @@ const UserDashboard = () => {
   return (
     <div className="px-10 md:py-4 pt-4">
       <ProtectRoute>
+        <Script type="text/javascript" src="//pl23641250.highrevenuenetwork.com/9d/dd/06/9ddd062e14b034f4d6043be8bf0a1f91.js" />
         <div className="flex justify-between items-center">
           <div className="md:w-20 w-16">
             <Link href="/">
@@ -82,6 +85,7 @@ const UserDashboard = () => {
       </div>
            <Link href="./userdashboard/myfavourite"><h2 className="w-fit py-2 px-5 bg-fuchsia-500 rounded-full text-white">My Favourite List</h2></Link>
           <Layout />
+          <Banner/>
         </div>
       </ProtectRoute>
     </div>
