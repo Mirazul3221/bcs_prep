@@ -11,7 +11,9 @@ import Profile from "./components/Profile";
 import SearchEngin from "../components/SearchEngin";
 import { useRouter } from "next/navigation";
 import { RiLogoutCircleRLine } from "react-icons/ri";
+import { IoHomeOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
+import { AiFillHeart } from "react-icons/ai";
 import { Banner, BannerMobile } from "../adsterra/Banner";
 import Script from "next/script";
 
@@ -63,7 +65,7 @@ const UserDashboard = () => {
             </Link>
           </div>
           <div className="flex gap-4 items-center">
-            <Navbar />
+            <div className="hidden md:block">  <Navbar /></div>
             <div className="group relative duration-100">
             <Profile profile={store.userInfo.profile} />
             <div className="space-y-1 hidden group-hover:block py-2 absolute z-10 duration-200 bg-white p-2 rounded-md shadow-md -left-4">
@@ -83,10 +85,14 @@ const UserDashboard = () => {
           </h2>
           <SearchEngin takeValue={setSearch}/>
       </div>
-           <Link href="./userdashboard/myfavourite"><h2 className="w-fit py-2 px-5 bg-fuchsia-500 rounded-full text-white">My Favourite List</h2></Link>
           <Layout />
          <div className="hidden md:block"><Banner/></div>
          <div className="hidden"><BannerMobile/></div>
+        </div>
+        <div className="mobile-responsive flex justify-center items-center gap-2 absolute bottom-2 left-[50%] -translate-x-[50%]">
+          <div className=""><div className="bg-fuchsia-500 text-white p-2 rounded-full"> <Link href={"./userdashboard/myprofile"}><CgProfile size={30} /></Link></div></div>
+          <div className=""><div className="bg-fuchsia-500 text-white p-2 rounded-full"> <Link href={"/"}><IoHomeOutline size={30} /></Link></div></div>
+          <div className=""><div className="bg-fuchsia-500 text-white p-2 rounded-full"> <Link href={"./userdashboard/myfavourite"}><AiFillHeart size={30}/></Link></div></div>
         </div>
       </ProtectRoute>
     </div>
