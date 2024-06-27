@@ -8,6 +8,10 @@ import { PiPenLight } from "react-icons/pi";
 import { baseurl } from "@/app/config";
 import Logo from "@/app/components/Logo";
 import ProtectRoute from "@/app/global/ProtectRoute";
+import Link from "next/link";
+import { CgProfile } from "react-icons/cg";
+import { IoHomeOutline } from "react-icons/io5";
+import { AiFillHeart } from "react-icons/ai";
 
 
 const Page = () => {
