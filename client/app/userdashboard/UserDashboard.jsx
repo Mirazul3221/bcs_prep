@@ -89,7 +89,7 @@ const UserDashboard = () => {
          <div className="hidden md:block"><Banner/></div>
          <div className="hidden"><BannerMobile/></div>
         </div>
-        <div className="mobile-responsive flex justify-center items-center gap-2 absolute bottom-2 left-[50%] -translate-x-[50%]">
+        <div className="mobile-responsive flex justify-center items-center gap-2 fixed bottom-2 left-[50%] -translate-x-[50%]">
           <div className=""><div className="bg-fuchsia-500 text-white p-2 rounded-full"> <Link href={"./userdashboard/myprofile"}><CgProfile size={30} /></Link></div></div>
           <div className=""><div className="bg-fuchsia-500 text-white p-2 rounded-full"> <Link href={"/"}><IoHomeOutline size={30} /></Link></div></div>
           <div className=""><div className="bg-fuchsia-500 text-white p-2 rounded-full"> <Link href={"./userdashboard/myfavourite"}><AiFillHeart size={30}/></Link></div></div>
