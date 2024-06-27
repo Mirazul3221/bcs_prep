@@ -12,7 +12,7 @@ import SearchEngin from "../components/SearchEngin";
 import { useRouter } from "next/navigation";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
-import { Banner } from "../adsterra/Banner";
+import { Banner, BannerMobile } from "../adsterra/Banner";
 import Script from "next/script";
 
 // import Image from "next/image";
@@ -85,7 +85,8 @@ const UserDashboard = () => {
       </div>
            <Link href="./userdashboard/myfavourite"><h2 className="w-fit py-2 px-5 bg-fuchsia-500 rounded-full text-white">My Favourite List</h2></Link>
           <Layout />
-          <Banner/>
+         <div className="hidden md:block"><Banner/></div>
+         <div className="hidden"><BannerMobile/></div>
         </div>
       </ProtectRoute>
     </div>
