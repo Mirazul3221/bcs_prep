@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import ProtectRoute from "../global/ProtectRoute";
 import Link from "next/link";
 import storeContext from "../global/createContex";
@@ -9,6 +9,10 @@ import Logo from "../components/Logo";
 import Layout from "./components/Layout";
 import Profile from "./components/Profile";
 import SearchEngin from "../components/SearchEngin";
+import { useRouter } from "next/navigation";
+import { RiLogoutCircleRLine } from "react-icons/ri";
+import { CgProfile } from "react-icons/cg";
+
 // import Image from "next/image";
 // import logo from "@/public/bcs-logo.png"
 // import { TextEditor } from './components/TextEditor';
@@ -39,6 +43,12 @@ const UserDashboard = () => {
   // };
 
   // console.log(filterValue('বাঙালি জাতি'))
+  const { dispatch } = useContext(storeContext);
+  const route = useRouter();
+  const logout = () => {
+   dispatch({type:"logout"})
+    route.push("/login");
+  };
   return (
     <div className="px-10 md:py-4 pt-4">
       <ProtectRoute>
@@ -51,10 +61,15 @@ const UserDashboard = () => {
           </div>
           <div className="flex gap-4 items-center">
             <Navbar />
-           
+            <div className="group relative duration-100">
+            <Profile profile={store.userInfo.profile} />
+            <div className="space-y-1 hidden group-hover:block py-2 absolute z-10 duration-200 bg-white p-2 rounded-md shadow-md -left-4">
             <Link href={"./userdashboard/myprofile"}>
-              <Profile profile={store.userInfo.profile} />
+             <h2 className="flex items-center gap-1 text-fuchsia-500"> <CgProfile /> Profile</h2>
             </Link>
+                 <h2 onClick={logout} className="cursor-pointer text-white text-sm flex items-center gap-1 px-2 rounded-md bg-[#ff8d85]"><RiLogoutCircleRLine /> Logout</h2>
+            </div>
+            </div>
           </div>
         </div>
         <div className="wrapper">

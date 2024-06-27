@@ -1,9 +1,9 @@
-import { decode_jwt } from "../userdashboard/utils/jwtExtract";
+import { decode_token } from "./extract_jwt";
 export const dataReducer = (state,action) => {
  //user authentication function
  const {type,paylod} = action;
  if (type == "login_success") {
-    state.userInfo = decode_jwt(paylod.token),
+    state.userInfo = decode_token(paylod.token),
     state.token = paylod.token
  }
  if (type == "logout") {
@@ -25,14 +25,5 @@ export const dataReducer = (state,action) => {
    });
    return filterQuestions;
  }
-
- if (type === "RECENT") {
-   const allData = action.payload;
-   const recentData = allData.slice(0, 20);
-   state.questionData = recentData;
-   return state;
- }
-
-
  return state
 }
