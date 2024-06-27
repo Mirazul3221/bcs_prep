@@ -57,7 +57,9 @@ export default function Home() {
           <div className="bg-white flex justify-center py-10">
             <Image src={manymobile} alt="multiple mobile"/>
           </div>
-          <Banner/>
+          <div className="w-full overflow-hidden">
+          <Banner className="w-full"/>
+          </div>
           <Script type="text/javascript" src="//pl23641250.highrevenuenetwork.com/9d/dd/06/9ddd062e14b034f4d6043be8bf0a1f91.js"/>
           <div className="footer flex justify-between items-center py-4 md:px-20 px-4 bg-gray-300">
                 <h2>
