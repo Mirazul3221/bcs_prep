@@ -559,9 +559,11 @@ const Controller = ({
                       url="url_to_share.com"
                       socialTypes={[
                         "facebook",
+                        "WhatsApp",
                         "twitter",
-                        "reddit",
+                        "Telegram",
                         "linkedin",
+                        "email",
                       ]}
                     />
                   </div>
