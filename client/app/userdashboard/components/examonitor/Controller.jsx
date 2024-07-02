@@ -548,7 +548,7 @@ const Controller = ({
                        </FacebookMessengerShareButton>
                        </div>
                        <div>
-                       <WhatsappShareButton>
+                       <WhatsappShareButton url="google.com">
                        <FaWhatsapp size={30} />
                        </WhatsappShareButton>
                        </div>
