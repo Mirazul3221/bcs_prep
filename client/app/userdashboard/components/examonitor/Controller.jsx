@@ -538,7 +538,7 @@ const Controller = ({
                 )}
                 {/* ========================share button layout========================== */}
                    <div className={`fixed shairBlankPoint z-50 top-0 left-0 w-screen h-screen bg-gray-500/10 items-end flex justify-start md:justify-center md:items-center ${share ? "scale-100" : "scale-0"} duration-100`}>
-                      <div className="md:w-1/2 h-1/3 md:h-1/2 w-full bg-white rounded-md">hello</div>
+                      <div className={`md:w-1/2 h-1/3 md:h-1/2 w-full ${share? "translate-y-0" : "translate-y-96"} md:translate-y-0 duration-500 bg-white rounded-md`}>hello</div>
                    </div>
                 {/* ==================Adding Explanation with click===================== */}
                 {showPoint1 && (
