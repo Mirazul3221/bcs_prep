@@ -2,7 +2,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import loveAnim from "@/public/love.gif";
 import { CiCircleQuestion } from "react-icons/ci";
-import { LiaClipboardListSolid } from "react-icons/lia";
+import { LiaClipboardListSolid, LiaFacebookMessenger } from "react-icons/lia";
 import { LiaHandPointUpSolid } from "react-icons/lia";
 import { RxCross2 } from "react-icons/rx";
 import { FaBookReader } from "react-icons/fa";
@@ -20,7 +20,8 @@ import storeContext from "@/app/global/createContex";
 import Image from "next/image";
 import { RiShareLine } from "react-icons/ri";
 import { usePathname } from "next/navigation";
-import { ShareSocial } from "react-share-social";
+import { FacebookMessengerIcon, FacebookMessengerShareButton, WhatsappIcon, WhatsappShareButton } from "react-share";
+import { FaWhatsapp } from "react-icons/fa6";
 // import correct from "@/public/mediaresource/music_button/right.mp3"
 //==================Import Audio Sound=============================
 // import correct from "../mediaresource/music_button/right.mp3";
@@ -245,31 +246,27 @@ const Controller = ({
     }
   };
   //===================================================
-  const [share, setShare] = useState(false);
-  const handleShare = () => {
-    setShare(true);
-  };
+  const [share,setShare] = useState(false)
+  const  handleShare = ()=> {
+    setShare(true)
+  }
   //====================================
   useEffect(() => {
-    window.addEventListener("click", (e) => {
+    window.addEventListener('click',(e)=>{
       if (e.target.classList.contains("shairBlankPoint")) {
-        setShare(false);
+        setShare(false)
       }
       // if (e.target.classList.contains("updateDesc")) {
       //   setControlDesc(true)
       // } else {
       //   setControlDesc(false)
       // }
-    }); //
+    })//
   }, []);
-  showPoint1
-    ? (document.body.style.overflow = "hidden")
-    : (document.body.style.overflow = "auto");
-  share
-    ? (document.body.style.overflow = "hidden")
-    : (document.body.style.overflow = "auto");
-  const pathname = usePathname();
-  console.log(pathname);
+ showPoint1 ? document.body.style.overflow = "hidden" :  document.body.style.overflow = "auto"
+ share ? document.body.style.overflow = "hidden" :  document.body.style.overflow = "auto"
+ const pathname = usePathname()
+ console.log(pathname)
   return (
     <div className={`pb-12 md:pb-0`}>
       <div className="flex gap-10 items-center">
@@ -534,10 +531,7 @@ const Controller = ({
                             {countReadTime(value._id)}
                           </h2>
                         </div>
-                        <div
-                          onClick={handleShare}
-                          className="flex items-center gap-[1px] cursor-pointer right-2 shadow-sm px-4 py-2 rounded-full border border-fuchsia-500"
-                        >
+                        <div onClick={handleShare} className="flex items-center gap-[1px] cursor-pointer right-2 shadow-sm px-4 py-2 rounded-full border border-fuchsia-500">
                           <RiShareLine size={20} color="#c602db" />
                         </div>
                       </div>
@@ -545,29 +539,22 @@ const Controller = ({
                   </>
                 )}
                 {/* ========================share button layout========================== */}
-                <div
-                  className={`fixed shairBlankPoint z-50 top-0 left-0 w-screen h-screen bg-gray-500/10 items-end flex justify-start md:justify-center md:items-center ${
-                    share ? "scale-100" : "scale-0"
-                  } duration-100`}
-                >
-                  <div
-                    className={`md:w-1/2 h-1/3 md:h-1/2 w-full ${
-                      share ? "translate-y-0" : "translate-y-96"
-                    } md:translate-y-0 duration-500 bg-white rounded-md p-4 md:p-6`}
-                  >
-                    <ShareSocial
-                      url="url_to_share.com"
-                      socialTypes={[
-                        "facebook",
-                        "WhatsApp",
-                        "twitter",
-                        "Telegram",
-                        "linkedin",
-                        "email",
-                      ]}
-                    />
-                  </div>
-                </div>
+                   <div className={`fixed shairBlankPoint z-50 top-0 left-0 w-screen h-screen bg-gray-500/10 items-end flex justify-start md:justify-center md:items-center ${share ? "scale-100" : "scale-0"} duration-100`}>
+                      <div className={`md:w-1/2 h-1/3 md:h-1/2 w-full ${share? "translate-y-0" : "translate-y-96"} md:translate-y-0 duration-500 bg-white rounded-md p-4 md:p-6`}>
+                          <div className="flex gap-2">
+                          <div>
+                       <FacebookMessengerShareButton url="google.com">
+                        <LiaFacebookMessenger size={30} />
+                       </FacebookMessengerShareButton>
+                       </div>
+                       <div>
+                       <WhatsappShareButton>
+                       <FaWhatsapp size={30} />
+                       </WhatsappShareButton>
+                       </div>
+                          </div>
+                      </div>
+                   </div>
                 {/* ==================Adding Explanation with click===================== */}
                 {showPoint1 && (
                   <div className="w-screen fixed top-0 left-0 h-screen duration-500 bg-gray-500/5 flex z-50 justify-center items-center p-4 md:p-0">
