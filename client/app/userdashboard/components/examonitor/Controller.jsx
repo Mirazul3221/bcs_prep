@@ -263,8 +263,14 @@ const Controller = ({
       // }
     })//
   }, []);
- showPoint1 ? document.body.style.overflow = "hidden" :  document.body.style.overflow = "auto"
- share ? document.body.style.overflow = "hidden" :  document.body.style.overflow = "auto"
+//   console.log(showPoint)
+//   showPoint ? document.body.style.overflow = "hidden" :  document.body.style.overflow = "auto"
+// //  share ? document.body.style.overflow = "hidden" :  document.body.style.overflow = "auto"
+if (share || showPoint) {
+  document.body.style.overflow = "hidden"
+} else {
+  document.body.style.overflow = "auto"
+}
  const pathname = usePathname()
  console.log(pathname)
   return (
