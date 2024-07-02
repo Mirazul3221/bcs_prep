@@ -519,12 +519,12 @@ const Controller = ({
                         <div className="flex items-center gap-[1px] right-2 shadow-sm px-4 py-2 rounded-full border border-fuchsia-500">
                           {value._id ===
                           getReadQuestion?.find((id) => id === value._id) ? (
-                            <PiEye color="#ff0037" />
+                            <PiEye color="#c602db" />
                           ) : (
                             <PiEyeSlash color="#a8a8a8" />
                           )}
                           <h2
-                            className={`text-[8px] text-rose-500 md:text-[10px]  rounded-full ${
+                            className={`text-[8px] text-fuchsia-500 md:text-[10px]  rounded-full ${
                               countReadTime(value._id) === null ? "" : ""
                             } flex justify-center items-center`}
                           >
