@@ -18,6 +18,8 @@ import axios from "axios";
 import { baseurl } from "@/app/config";
 import storeContext from "@/app/global/createContex";
 import Image from "next/image";
+import { RiShareLine } from "react-icons/ri";
+import { usePathname } from "next/navigation";
 // import correct from "@/public/mediaresource/music_button/right.mp3"
 //==================Import Audio Sound=============================
 // import correct from "../mediaresource/music_button/right.mp3";
@@ -30,7 +32,7 @@ const Controller = ({
   grid,
   allQuestion,
   megaQuestions,
-  isSave
+  isSave,
 }) => {
   const [selectAll, setSelectAll] = useState(0);
   const [countReadingQuestion, setCountReadingQuestion] = useState(0);
@@ -242,8 +244,29 @@ const Controller = ({
     }
   };
   //===================================================
+  const [share,setShare] = useState(false)
+  const  handleShare = ()=> {
+    setShare(true)
+  }
+  //====================================
+  useEffect(() => {
+    window.addEventListener('click',(e)=>{
+      if (e.target.classList.contains("shairBlankPoint")) {
+        setShare(false)
+      }
+      // if (e.target.classList.contains("updateDesc")) {
+      //   setControlDesc(true)
+      // } else {
+      //   setControlDesc(false)
+      // }
+    })//
+  }, []);
+ showPoint1 ? document.body.style.overflow = "hidden" :  document.body.style.overflow = "auto"
+ share ? document.body.style.overflow = "hidden" :  document.body.style.overflow = "auto"
+ const pathname = usePathname()
+ console.log(pathname)
   return (
-    <div className={`pb-12 md:pb-0  ${showPoint1 ? "fixed z-10" : ""}`}>
+    <div className={`pb-12 md:pb-0`}>
       <div className="flex gap-10 items-center">
         <div className="flex items-center ml-6 md:ml-0 gap-2 text-gray-700">
           <FaBookReader size={20} />
@@ -490,6 +513,7 @@ const Controller = ({
                             )}
                           </div>
                         )}
+
                         <div className="flex items-center gap-[1px] right-2 shadow-sm px-4 py-2 rounded-full border border-fuchsia-500">
                           {value._id ===
                           getReadQuestion?.find((id) => id === value._id) ? (
@@ -505,10 +529,17 @@ const Controller = ({
                             {countReadTime(value._id)}
                           </h2>
                         </div>
+                        <div onClick={handleShare} className="flex items-center gap-[1px] cursor-pointer right-2 shadow-sm px-4 py-2 rounded-full border border-fuchsia-500">
+                          <RiShareLine size={20} color="#c602db" />
+                        </div>
                       </div>
                     </div>
                   </>
                 )}
+                {/* ========================share button layout========================== */}
+                   <div className={`fixed shairBlankPoint z-50 top-0 left-0 w-screen h-screen bg-gray-500/10 items-end flex justify-start md:justify-center md:items-center ${share ? "scale-100" : "scale-0"} duration-100`}>
+                      <div className="md:w-1/2 h-1/3 md:h-1/2 w-full bg-white rounded-md">hello</div>
+                   </div>
                 {/* ==================Adding Explanation with click===================== */}
                 {showPoint1 && (
                   <div className="w-screen fixed top-0 left-0 h-screen duration-500 bg-gray-500/5 flex z-50 justify-center items-center p-4 md:p-0">
