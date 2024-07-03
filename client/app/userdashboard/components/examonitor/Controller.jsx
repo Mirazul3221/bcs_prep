@@ -20,7 +20,7 @@ import storeContext from "@/app/global/createContex";
 import Image from "next/image";
 import { RiShareLine } from "react-icons/ri";
 import { usePathname } from "next/navigation";
-import { FacebookMessengerIcon, FacebookMessengerShareButton, WhatsappIcon, WhatsappShareButton } from "react-share";
+import { EmailShareButton, FacebookMessengerIcon, FacebookMessengerShareButton, WhatsappIcon, WhatsappShareButton } from "react-share";
 import { FaWhatsapp } from "react-icons/fa6";
 // import correct from "@/public/mediaresource/music_button/right.mp3"
 //==================Import Audio Sound=============================
@@ -547,16 +547,22 @@ if (share || showPoint) {
                 {/* ========================share button layout========================== */}
                    <div className={`fixed shairBlankPoint z-50 top-0 left-0 w-screen h-screen bg-gray-500/10 items-end flex justify-start md:justify-center md:items-center ${share ? "scale-100" : "scale-0"} duration-100`}>
                       <div className={`md:w-1/2 h-1/3 md:h-1/2 w-full ${share? "translate-y-0" : "translate-y-96"} md:translate-y-0 duration-500 bg-white rounded-md p-4 md:p-6`}>
-                          <div className="flex gap-2">
+                      <h2 className="text-center pb-2 border-b-[1px]">Share With Your Friends</h2>
+                          <div className="flex gap-2 pt-2">
                           <div>
-                       <FacebookMessengerShareButton url="google.com">
+                       <FacebookMessengerShareButton url={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}>
                         <LiaFacebookMessenger size={30} />
                        </FacebookMessengerShareButton>
                        </div>
                        <div>
-                       <WhatsappShareButton url="google.com">
+                       <WhatsappShareButton url={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}>
                        <FaWhatsapp size={30} />
                        </WhatsappShareButton>
+                       </div>
+                       <div>
+                       <EmailShareButton url={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}>
+                       <FaWhatsapp size={30} />
+                       </EmailShareButton>
                        </div>
                           </div>
                       </div>
