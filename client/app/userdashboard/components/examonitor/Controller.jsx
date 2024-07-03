@@ -537,7 +537,7 @@ if (share || showPoint) {
                             {countReadTime(value._id)}
                           </h2>
                         </div>
-                        <div onClick={()=>{handleShare,setShowPointDesc(value)}} className="flex items-center gap-[1px] cursor-pointer right-2 shadow-sm px-4 py-2 rounded-full border border-fuchsia-500">
+                        <div onClick={()=>{handleShare(),setShowPointDesc(value)}} className="flex items-center gap-[1px] cursor-pointer right-2 shadow-sm px-4 py-2 rounded-full border border-fuchsia-500">
                           <RiShareLine size={20} color="#c602db" />
                         </div>
                       </div>
