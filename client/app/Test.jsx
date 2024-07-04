@@ -1694,9 +1694,9 @@ window.addEventListener('keydown', e => {
 
     function generateColor() {
       let c = HSVtoRGB(Math.random(), 1.2, 1.2);
-      c.r *= 0.5;
-      c.g *= 0.5;
-      c.b *= 0.5;
+      c.r *= 0.35;
+      c.g *= 0.35;
+      c.b *= 0.35;
       return c;
     }
 
