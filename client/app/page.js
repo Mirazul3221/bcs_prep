@@ -17,6 +17,7 @@ import manymobile from '@/public/banner/multiplemobile.png'
 import { FaFacebook, FaLinkedin, FaSquareWhatsapp } from "react-icons/fa6";
 import { Banner } from "./adsterra/Banner";
 import Script from "next/script";
+import Test from "./Test";
 export default function Home() {
   const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
   
@@ -42,14 +43,13 @@ export default function Home() {
     return <div>{isClient ? <AssistantHome /> : <></>}</div>;
   } else {
     return (
-      <div>
+      <div className="relative"> 
         {isClient ? (
           <main className="max-w-[1440px] mx-auto">
            <div className="fixed -z-10 top-0 left-0 overflow-hidden w-screen h-screen">
            <div className="absolute -top-10 md:h-[110vh] h-[60vh] w-[200vw] bg-gray-300 -z-10 rotate-12 -left-20 md:-left-48"></div>
            </div>
           
-
             <Header />
           <BannerSection/>
           <Section_01/>
@@ -70,6 +70,7 @@ export default function Home() {
                   <FaSquareWhatsapp size={25}/>
                   <FaLinkedin size={25}/>
                 </div>
+                <Test/>
              
           </div>
           {/* <Card/> */}
