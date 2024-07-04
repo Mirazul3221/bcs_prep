@@ -1693,10 +1693,10 @@ window.addEventListener('keydown', e => {
 }); */
 
     function generateColor() {
-      let c = HSVtoRGB(Math.random(), 1.2, 0.5);
-      c.r *= 0.15;
-      c.g *= 0.15;
-      c.b *= 0.15;
+      let c = HSVtoRGB(Math.random(), 1.2, 1.2);
+      c.r *= 0.5;
+      c.g *= 0.5;
+      c.b *= 0.5;
       return c;
     }
 
