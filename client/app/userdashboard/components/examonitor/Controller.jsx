@@ -2,8 +2,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import loveAnim from "@/public/love.gif";
 import { CiCircleQuestion } from "react-icons/ci";
-import { LiaClipboardListSolid, LiaFacebookMessenger } from "react-icons/lia";
-import { LiaHandPointUpSolid } from "react-icons/lia";
+import { LiaClipboardListSolid, LiaHandPointUpSolid } from "react-icons/lia";
 import { RxCross2 } from "react-icons/rx";
 import { FaBookReader } from "react-icons/fa";
 import { PiEye } from "react-icons/pi";
@@ -20,12 +19,27 @@ import storeContext from "@/app/global/createContex";
 import Image from "next/image";
 import { RiShareLine } from "react-icons/ri";
 import { usePathname } from "next/navigation";
-import { EmailShareButton, FacebookMessengerIcon, FacebookMessengerShareButton, WhatsappIcon, WhatsappShareButton } from "react-share";
-import { FaWhatsapp } from "react-icons/fa6";
+import {
+  EmailShareButton,
+  FacebookMessengerShareButton,
+  LinkedinShareButton,
+  TelegramShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+} from "react-share";
+import { FaRegCopy, FaWhatsapp } from "react-icons/fa6";
+import CopyToClipboard from "react-copy-to-clipboard";
 // import correct from "@/public/mediaresource/music_button/right.mp3"
 //==================Import Audio Sound=============================
 // import correct from "../mediaresource/music_button/right.mp3";
 // import wrong from "../mediaresource/music_button/error.mp3";
+import messanger from "@/public/share-icone/messanger.png"
+import whatsapp from "@/public/share-icone/whatsapp.png"
+import linkedin from "@/public/share-icone/linkedin.png"
+import gmail from "@/public/share-icone/gmail.png"
+import telegram from "@/public/share-icone/telegram.png"
+import twitter from "@/public/share-icone/twitter.png"
+import pinterest from "@/public/share-icone/pinterast.png"
 
 const Controller = ({
   getLocalVal,
@@ -246,33 +260,34 @@ const Controller = ({
     }
   };
   //===================================================
-  const [share,setShare] = useState(false)
-  const  handleShare = ()=> {
-    setShare(true)
-  }
+  const [share, setShare] = useState(false);
+  const handleShare = () => {
+    setShare(true);
+  };
   //====================================
   useEffect(() => {
-    window.addEventListener('click',(e)=>{
+    window.addEventListener("click", (e) => {
       if (e.target.classList.contains("shairBlankPoint")) {
-        setShare(false)
+        setShare(false);
       }
       // if (e.target.classList.contains("updateDesc")) {
       //   setControlDesc(true)
       // } else {
       //   setControlDesc(false)
       // }
-    })//
+    }); //
   }, []);
-//   console.log(showPoint)
-//   showPoint ? document.body.style.overflow = "hidden" :  document.body.style.overflow = "auto"
-// //  share ? document.body.style.overflow = "hidden" :  document.body.style.overflow = "auto"
-if (share || showPoint) {
-  document.body.style.overflow = "hidden"
-} else {
-  document.body.style.overflow = "auto"
-}
- const pathname = usePathname()
- console.log(pathname)
+  //   console.log(showPoint)
+  //   showPoint ? document.body.style.overflow = "hidden" :  document.body.style.overflow = "auto"
+  // //  share ? document.body.style.overflow = "hidden" :  document.body.style.overflow = "auto"
+  if (share || showPoint) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+  const pathname = usePathname();
+  console.log(pathname);
+  const [copy,setCopy] = useState("copy")
   return (
     <div className={`pb-12 md:pb-0`}>
       <div className="flex gap-10 items-center">
@@ -313,7 +328,7 @@ if (share || showPoint) {
               key={index}
               className={`bg-gray-100 question_box relative p-2 md:mx-0 md:p-6 rounded-md shadow-md border-2`}
             >
-              <div key={index} className="md:mb-6 mb-10">
+              <div key={index} className="md:mb-10 mb-10">
                 <div>
                   <div className="flex gap-2 bg-white px-4 py-2 rounded-md shadow-sm">
                     <div>
@@ -537,7 +552,12 @@ if (share || showPoint) {
                             {countReadTime(value._id)}
                           </h2>
                         </div>
-                        <div onClick={()=>{handleShare(),setShowPointDesc(value)}} className="flex items-center gap-[1px] cursor-pointer right-2 shadow-sm px-4 py-2 rounded-full border border-fuchsia-500">
+                        <div
+                          onClick={() => {
+                            handleShare(), setShowPointDesc(value);
+                          }}
+                          className="flex items-center gap-[1px] cursor-pointer right-2 shadow-sm px-4 py-2 rounded-full border border-fuchsia-500"
+                        >
                           <RiShareLine size={20} color="#c602db" />
                         </div>
                       </div>
@@ -545,28 +565,81 @@ if (share || showPoint) {
                   </>
                 )}
                 {/* ========================share button layout========================== */}
-                   <div className={`fixed shairBlankPoint z-50 top-0 left-0 w-screen h-screen bg-gray-500/10 items-end flex justify-start md:justify-center md:items-center ${share ? "scale-100" : "scale-0"} duration-100`}>
-                      <div className={`md:w-1/2 h-1/3 md:h-1/2 w-full ${share? "translate-y-0" : "translate-y-96"} md:translate-y-0 duration-500 bg-white rounded-md p-4 md:p-6`}>
-                      <h2 className="text-center pb-2 border-b-[1px]">Share With Your Friends</h2>
-                          <div className="flex gap-2 pt-2">
-                          <div>
-                       <FacebookMessengerShareButton url={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}>
-                        <LiaFacebookMessenger size={30} />
-                       </FacebookMessengerShareButton>
-                       </div>
-                       <div>
-                       <WhatsappShareButton url={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}>
-                       <FaWhatsapp size={30} />
-                       </WhatsappShareButton>
-                       </div>
-                       <div>
-                       <EmailShareButton url={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}>
-                       <FaWhatsapp size={30} />
-                       </EmailShareButton>
-                       </div>
-                          </div>
+                <div
+                  className={`fixed shairBlankPoint z-50 top-0 left-0 w-screen h-screen bg-gray-500/10 items-end flex justify-start md:justify-center md:items-center ${
+                    share ? "scale-100" : "scale-0"
+                  } duration-100`}
+                >
+                  <div
+                    className={`md:w-1/2 w-full ${
+                      share ? "translate-y-0" : "translate-y-96"
+                    } md:translate-y-0 duration-500 bg-white rounded-md p-4 md:p-10`}
+                  >
+                    <h2 className="text-center pb-2 border-b-[1px]">
+                      Share With Your Friends
+                    </h2>
+                    <div className="grid grid-cols-3 w-2/3 md:w-full mx-auto md:grid-cols-7 pt-2 justify-center">
+                      <div>
+                        <FacebookMessengerShareButton
+                          url={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}
+                        >
+                         <Image className="w-16 h-16" src={messanger} alt="Facebook-messanger"/>
+                        </FacebookMessengerShareButton>
                       </div>
-                   </div>
+                      <div>
+                        <WhatsappShareButton
+                          url={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}
+                        >
+                           <Image className="w-16 h-16" src={whatsapp} alt="Whatsapp"/>
+                        </WhatsappShareButton>
+                      </div>
+                      <div>
+                        <EmailShareButton
+                          url={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}
+                        >
+                         <Image className="w-16 h-16" src={gmail} alt="gmail"/>
+                        </EmailShareButton>
+                      </div>
+                      <div>
+                        < LinkedinShareButton
+                          url={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}
+                        >
+                         <Image className="w-16 h-16" src={linkedin} alt="Linkedin"/>
+                        </ LinkedinShareButton>
+                      </div>
+                      <div>
+                        < TwitterShareButton
+                          url={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}
+                        >
+                         <Image className="w-16 h-16" src={twitter} alt="Twitter"/>
+                        </ TwitterShareButton>
+                      </div>
+                      <div>
+                        < TelegramShareButton
+                          url={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}
+                        >
+                         <Image className="w-16 h-16" src={telegram} alt="Telegram"/>
+                        </ TelegramShareButton>
+                      </div>
+                      <div>
+                        < TelegramShareButton
+                          url={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}
+                        >
+                         <Image className="w-16 h-16" src={pinterest} alt="pinterest"/>
+                        </ TelegramShareButton>
+                      </div>
+                    </div>
+
+                    <div className="mt-4 py-2 px-4 bg-fuchsia-500 text-white flex gap-2 justify-between items-center">
+                      <p className="">https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}</p>
+                      <CopyToClipboard text={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}>
+                        <button onClick={()=>{setCopy('Copied!');setTimeout(() => {
+                          setCopy('copy')
+                        }, 1000);}}>{ copy=="copy" ? <FaRegCopy size={25} color="#fff" /> : copy }</button>
+                      </CopyToClipboard>
+                    </div>
+                  </div>
+                </div>
                 {/* ==================Adding Explanation with click===================== */}
                 {showPoint1 && (
                   <div className="w-screen fixed top-0 left-0 h-screen duration-500 bg-gray-500/5 flex z-50 justify-center items-center p-4 md:p-0">
