@@ -30,6 +30,11 @@ const Page = () => {
     fetchData();
   }, []);
 
+
+  const conv = "Hello world how are you"
+  conv.toLocaleUpperCase()
+  console.log(conv)
+
   return (
     <div className="bg-gray-100 py-2 min-h-screen">
       <div className="flex justify-center items-center w-20 h-20 p-2 md:p-0 md:w-36 md:h-36 bg-white rounded-full mx-auto border-2">
@@ -97,7 +102,7 @@ const Page = () => {
           </p>
         </div>
       )}
-      <div className="w-full overflow-hidden">
+      <div className="w-full overflow-hidden flex justify-center">
         <Banner className="w-full" />
       </div>
     </div>
