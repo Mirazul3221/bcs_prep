@@ -47,7 +47,6 @@ const page = () => {
                 {data.topic}
               </h3>
               <h4>
-                {" "}
                 <span className="font-bold text-gray-700">
                   Previous Exam
                 </span> : {data?.otherExamName}
