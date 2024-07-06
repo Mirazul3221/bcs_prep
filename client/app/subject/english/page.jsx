@@ -1,6 +1,6 @@
 "use client";
 import { englishTopicValue } from "@/app/assistantdashboard/components/data";
-import { MdOutlineArrowRight } from "react-icons/md";
+import { MdOutlineArrowRight, MdOutlineDoubleArrow } from "react-icons/md";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { GiBookmarklet } from "react-icons/gi";
 import Logo from "@/app/components/Logo";
@@ -88,9 +88,9 @@ const Page = () => {
                             setSubSwitcher(true);
                             setCount(i);
                           }}
-                          className="cursor-pointer bg-fuchsia-700 mb-2 text-white md:text-lg font-bold px-8 py-2"
+                          className="cursor-pointer flex justify-between items-center bg-fuchsia-400 rounded-lg border-fuchsia-600 mb-2 text-white md:text-lg font-bold px-8 py-2"
                         >
-                          {item}
+                          {item}  <MdOutlineDoubleArrow />
                         </h2>
                       </div>
                     );
