@@ -581,61 +581,68 @@ const Controller = ({
                     <div className="grid grid-cols-3 w-2/3 md:w-full mx-auto md:grid-cols-7 pt-2 justify-center">
                       <div>
                         <FacebookMessengerShareButton
-                          url={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}
+                          url={`https://bcs-prep.vercel.app/english/${showPointDesc._id}`}
                         >
                          <Image className="w-16 h-16" src={messanger} alt="Facebook-messanger"/>
                         </FacebookMessengerShareButton>
                       </div>
                       <div>
                         <WhatsappShareButton
-                          url={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}
+                          url={`https://bcs-prep.vercel.app/english/${showPointDesc._id}`}
                         >
                            <Image className="w-16 h-16" src={whatsapp} alt="Whatsapp"/>
                         </WhatsappShareButton>
                       </div>
                       <div>
                         <EmailShareButton
-                          url={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}
+                          url={`https://bcs-prep.vercel.app/english/${showPointDesc._id}`}
                         >
                          <Image className="w-16 h-16" src={gmail} alt="gmail"/>
                         </EmailShareButton>
                       </div>
                       <div>
                         < LinkedinShareButton
-                          url={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}
+                          url={`https://bcs-prep.vercel.app/english/${showPointDesc._id}`}
                         >
                          <Image className="w-16 h-16" src={linkedin} alt="Linkedin"/>
                         </ LinkedinShareButton>
                       </div>
                       <div>
                         < TwitterShareButton
-                          url={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}
+                          url={`https://bcs-prep.vercel.app/english/${showPointDesc._id}`}
                         >
                          <Image className="w-16 h-16" src={twitter} alt="Twitter"/>
                         </ TwitterShareButton>
                       </div>
                       <div>
                         < TelegramShareButton
-                          url={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}
+                          url={`https://bcs-prep.vercel.app/english/${showPointDesc._id}`}
                         >
                          <Image className="w-16 h-16" src={telegram} alt="Telegram"/>
                         </ TelegramShareButton>
                       </div>
                       <div>
                         < TelegramShareButton
-                          url={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}
+                          url={`https://bcs-prep.vercel.app/english/${showPointDesc._id}`}
                         >
                          <Image className="w-16 h-16" src={pinterest} alt="pinterest"/>
                         </ TelegramShareButton>
                       </div>
+                      <div className="md:hidden w-16 h-16 bg-fuchsia-500 rounded-full flex justify-center items-center">
+                      <CopyToClipboard text={`https://bcs-prep.vercel.app/english/${showPointDesc._id}`}>
+                        <button className="p-4 text-white" onClick={()=>{setCopy('Copied!');setTimeout(() => {
+                          setCopy('copy')
+                        }, 1000);}}>{ copy=="copy" ? <FaRegCopy size={30} color="fff" /> : copy }</button>
+                      </CopyToClipboard>
+                      </div>
                     </div>
 
-                    <div className="mt-4 py-2 px-4 bg-fuchsia-500 text-white flex gap-2 justify-between items-center">
-                      <p className="">https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}</p>
-                      <CopyToClipboard text={`https://bcs-prep.vercel.app/${showPointDesc.subject}/${showPointDesc._id}`}>
-                        <button onClick={()=>{setCopy('Copied!');setTimeout(() => {
+                    <div className="mt-4 hidden py-2 px-4 border border-fuchsia-500 rounded-md text-fuchsia-500 md:flex gap-2 justify-between items-center">
+                      <div >https://bcs-prep.vercel.app/english/${showPointDesc._id}</div>
+                      <CopyToClipboard text={`https://bcs-prep.vercel.app/english/${showPointDesc._id}`}>
+                        <button className="p-4" onClick={()=>{setCopy('Copied!');setTimeout(() => {
                           setCopy('copy')
-                        }, 1000);}}>{ copy=="copy" ? <FaRegCopy size={25} color="#fff" /> : copy }</button>
+                        }, 1000);}}>{ copy=="copy" ? <FaRegCopy size={25} /> : copy }</button>
                       </CopyToClipboard>
                     </div>
                   </div>
@@ -666,7 +673,7 @@ const Controller = ({
                           <span className="font-bold text-gray-700">
                             Subject
                           </span>{" "}
-                          : {showPointDesc.subject}
+                          :english
                         </h2>
                         <h3>
                           {" "}

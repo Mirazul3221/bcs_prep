@@ -36,6 +36,14 @@ export class EnglishController {
     return await this.englishService.findOne(id);
   }
 
+
+  @Get('user/findbyid/:id')
+  async findBySingleId(@Param('id') id: string) {
+    return await this.englishService.findOne(id);
+  }
+
+
+
   @Patch('update/:id')//
   async update(@Param('id') id: string, @Body() body) : Promise<{msg:string}> {
     return await this.englishService.update(id, body);
