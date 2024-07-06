@@ -88,7 +88,7 @@ const Page = () => {
                             setSubSwitcher(true);
                             setCount(i);
                           }}
-                          className="cursor-pointer flex justify-between items-center bg-fuchsia-400 rounded-lg border-fuchsia-600 mb-2 text-white md:text-lg font-bold px-8 py-2"
+                          className="cursor-pointer flex justify-between items-center bg-fuchsia-500 rounded-lg border-fuchsia-600 mb-2 text-white md:text-lg font-bold px-8 py-2"
                         >
                           {item}  <MdOutlineDoubleArrow />
                         </h2>
