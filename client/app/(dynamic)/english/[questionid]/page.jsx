@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react";
 import waiting from "@/public/wating.gif"
 import Image from "next/image";
 
-const page = () => {
+const Page = () => {
   const [data, setData] = useState([]);
   const [loader, setloader] = useState(true);
   const pram = useParams();
@@ -29,7 +29,6 @@ const page = () => {
     fetchData();
   }, []);
 
-  console.log(loader);
   return (
     <div className="bg-gray-100 py-2 min-h-screen">
         <div className="flex justify-center items-center w-20 h-20 p-2 md:p-0 md:w-36 md:h-36 bg-white rounded-full mx-auto border-2"><Logo w={100}/></div>
@@ -98,4 +97,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
