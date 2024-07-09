@@ -1,6 +1,5 @@
 "use client"
 import React from 'react'
-import Monitor from '../components/examonitor/Monitor';
 import ProtectRoute from '@/app/global/ProtectRoute';
 import Link from 'next/link';
 import { CgProfile } from 'react-icons/cg';
