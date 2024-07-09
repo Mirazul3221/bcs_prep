@@ -18,7 +18,7 @@ const English = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const { data } = await axios.get(`${baseurl}/english/assist/find`, {
+        const { data } = await axios.get(`${baseurl}/allquestionscollection/english`, {
           headers: {
             Authorization: `Bearer ${store.token}`,
           },
@@ -35,11 +35,11 @@ const English = () => {
     async function fetchData() {
       try {
         setSwitcher(true)
-        const { data } = await axios.get(`${baseurl}/english/assist/find/${id}`, {
+        const { data } = await axios.get(`${baseurl}/allquestionscollection/english/find/${id}`, {
           headers: {
             Authorization: `Bearer ${store.token}`,
           },
-        });
+        });//
         setSingleData(data)
         setSwitcher(false)
       } catch (error) {

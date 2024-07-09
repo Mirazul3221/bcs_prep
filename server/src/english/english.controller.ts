@@ -12,7 +12,7 @@ export class EnglishController {
   @Post('/add')
   @FormDataRequest({storage:FileSystemStoredFile})
  async create(@Body() createEnglishDto: CreateEnglishDto) {
-  console.log(createEnglishDto)
+  // console.log(createEnglishDto)
     return await this.englishService.create(createEnglishDto);
   }
 

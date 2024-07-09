@@ -7,7 +7,7 @@ import { English, english_model } from './schema/english.schema';
 @Injectable()
 export class EnglishService {
 constructor(@InjectModel(english_model)
-private englishQuestionModel: mongoose.Model<English>,){}
+private englishQuestionModel: mongoose.Model<English>){}
 
  async create(createEnglishDto: CreateEnglishDto) : Promise<{msg:string}> {
     const {subSubject,topic,examName,otherExamName,question,rightAns,option_01,option_02,option_03,option_04,description} = createEnglishDto

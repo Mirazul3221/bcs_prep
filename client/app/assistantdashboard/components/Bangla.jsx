@@ -40,11 +40,12 @@ const Bangla = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
+    formData.append("subject", "Bangla");
     formData.append("subSubject", subSubject);
     formData.append("topic", topic);
+    formData.append("examName", exam);
     formData.append("isAuthor", isAuthor);
     formData.append("examType", examType);
-    formData.append("examName", exam);
     formData.append("examSeassion", examSeassion);
     formData.append("otherExamName", otherExam);
     formData.append("question", question);
@@ -57,7 +58,7 @@ const Bangla = () => {
 
     try {
       setLoader(true);
-      const { data } = await axios.post(`${baseurl}/bangla/add`, formData, {
+      const { data } = await axios.post(`${baseurl}/allquestionscollection/create`, formData, {
         headers: {
           Authorization: `Bearer ${store.token}`,
         },

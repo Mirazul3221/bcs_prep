@@ -37,10 +37,10 @@ const English = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
+    formData.append("subject", "English");
     formData.append("subSubject", subSubject);
     formData.append("topic", topic);
     formData.append("examName", exam);
-    // formData.append("otherExamName", otherExam);
     formData.append("isAuthor", isAuthor);
     formData.append("examType", examType);
     formData.append("examSeassion", examSeassion);
@@ -55,11 +55,12 @@ const English = () => {
 
     try {
       setLoader(true);
-      const { data } = await axios.post(`${baseurl}/english/add`, formData, {
+      const { data } = await axios.post(`${baseurl}/allquestionscollection/create`, formData, {
         headers: {
           Authorization: `Bearer ${store.token}`,
         },
       });
+
       //===================================
       // setSubSubject("");
       // setTopic("");
@@ -81,6 +82,7 @@ const English = () => {
       setTimeout(() => {
         setAlert("");
       }, 1000);
+      console.log(error)
       //error.response.data.message
     }
   };

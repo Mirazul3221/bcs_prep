@@ -28,7 +28,7 @@ const Page = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const { data } = await axios.get(`${baseurl}/bangla/find`, {
+        const { data } = await axios.get(`${baseurl}/allquestionscollection/banglaforeader`, {
           headers: {
             Authorization: `Bearer ${store.token}`,
           },
@@ -67,7 +67,7 @@ const Page = () => {
         {switcher ? (
           <>
             {filterData?.length > 0 ? (
-              <Monitor questions={filterData} />
+              <Monitor questions={filterData} isSave={'no'} />
             ) : (
               <CommingSoom />
             )}

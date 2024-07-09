@@ -35,7 +35,7 @@ const EditEnglish = ({ setSwitcher, editQuestion }) => {
     try {
       setLoader(true);
       const { data } = await axios.patch(
-        `${baseurl}/english/update/${editQuestion._id}`,updateQuestion,
+        `${baseurl}/allquestionscollection/updatenglish/${editQuestion._id}`,updateQuestion,
         {
           headers: {
             Authorization: `Bearer ${store.token}`,
