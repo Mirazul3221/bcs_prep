@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { CgProfile } from 'react-icons/cg';
 import { IoHomeOutline } from 'react-icons/io5';
 import { AiFillHeart } from 'react-icons/ai';
-import { usePathname } from 'next/navigation';
+// import { usePathname } from 'next/navigation';
 
 const Page = () => {
 
@@ -15,8 +15,8 @@ const Page = () => {
   //  }
   //  console.log(filterQuestions("English"), allQuestion)
     //===============================
-    const pathNamme = usePathname()
-    console.log(pathNamme)
+    // const pathNamme = usePathname()
+    // console.log(pathNamme)
   return (
         <ProtectRoute>
               <div className='md:p-20 p-2 md:w-1/2'>
