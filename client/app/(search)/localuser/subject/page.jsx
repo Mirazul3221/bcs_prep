@@ -8,7 +8,7 @@ import loderImage from '@/public/wating.gif'
 import Image from 'next/image'
 
 
-const page = () => {
+const Page = () => {
 const [data,setData] = useState([])
 const [loader,setLoader] = useState(false)
 const {store} = useContext(storeContext)
@@ -49,4 +49,4 @@ console.log(data)
   )
 }
 
-export default page
+export default Page
