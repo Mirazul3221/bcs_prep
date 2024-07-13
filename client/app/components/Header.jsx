@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Logo from "./Logo";
 import { FaBars } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
 import Link from "next/link";
+import Search from "./Search";
 const Header = () => {
   const [switcher, setSwitcher] = useState(false);
   const [switcher1, setSwitcher1] = useState(false);
@@ -21,7 +22,6 @@ const Header = () => {
     window.addEventListener("scroll",scrollHeader)
   };
  }, []);
-
   return (
     <div className={`md:p-0 md:px-20 px-4 ${header ? "fixed w-full left-0 top-0 bg-white/50 shadow-lg duration-500 z-50 backdrop-blur-md" : ""}`}>
       <div className={`flex justify-between py-3 ${header ? "duration-100" : ""}`}>
@@ -36,13 +36,13 @@ const Header = () => {
           size={30}
         />
 
-        <div className="hidden md:block">
+        <div className="hidden md:flex w-7/12 gap-10">
           <Logo w={100} />
+          <Search/>
         </div>
         <div className="md:hidden block">
           <Logo w={60} />
         </div>
-
         <div
           className={`md:hidden ${
             switcher ? "left-0" : "-left-[400px]"
@@ -126,7 +126,7 @@ const Header = () => {
             </li>
           </div>
           <Link href={"/register"}>
-            <li className="text-lg font-normal px-4 ml-2 text-white bg-fuchsia-500 w-fit cursor-pointer duration-500 rounded-md">
+            <li className="text-lg font-normal px-4 ml-2 text-white bg-fuchsia-500 py-[5px] w-fit cursor-pointer duration-500 rounded-md">
               Join
             </li>
           </Link>

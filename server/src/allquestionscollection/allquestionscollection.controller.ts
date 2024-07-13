@@ -1,9 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe, Query, Req } from '@nestjs/common';
 import { AllquestionscollectionService } from './allquestionscollection.service';
 import { CreateAllquestionscollectionDto } from './dto/create-allquestionscollection.dto';
 import { UpdateAllquestionscollectionDto } from './dto/update-allquestionscollection.dto';
 import { FileSystemStoredFile, FormDataRequest } from 'nestjs-form-data';
-
 @Controller('allquestionscollection')
 export class AllquestionscollectionController {
   constructor(private readonly allquestionscollectionService: AllquestionscollectionService) {}
@@ -76,4 +75,9 @@ export class AllquestionscollectionController {
   multipleQue(@Body() allQuestionsInfo) {
     return this.allquestionscollectionService.multipleQue(allQuestionsInfo);
   }
+  
+  @Get('api/search/:value')
+ async searchQuestionByQuery(@Param("value") param){
+     return this.allquestionscollectionService.searchQuestionByQuery(param)
+  } 
 }

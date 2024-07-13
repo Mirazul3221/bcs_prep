@@ -128,4 +128,20 @@ export class AllquestionscollectionService {
   remove(id: number) {
     return `This action removes a #${id} allquestionscollection`;
   }
+  async searchQuestionByQuery(q){
+    let option = {}
+   if(q){
+    option = {
+      $or : [
+        {subject : new RegExp(q.toLowerCase(),"i")},
+        {question : new RegExp(q.toLowerCase(),"i")},
+        {otherExamName : new RegExp(q.toLowerCase(),"i")},
+      ]
+    }
+   }
+
+    const data = this.allquestionscollection.find(option)
+
+   return data
+  }
 }

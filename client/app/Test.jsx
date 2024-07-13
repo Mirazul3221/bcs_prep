@@ -1763,7 +1763,7 @@ window.addEventListener('keydown', e => {
     }
   }, []);
   return (
-    <div className="absolute top-14 left-0 w-full h-[100vh]">
+    <div className="absolute top-[74px] left-0 w-full h-[100vh]">
       {/* <Head>
             <script src={ww} defer>
             </script>

@@ -12,6 +12,7 @@ const DataProvider = ({children}) => {
     const [store,dispatch] = useReducer(dataReducer,{
         userInfo : decode_token(localstoreToken.token || ""),
         token : localstoreToken.token,
+        searchReasultFromGeneralUser : ""
     })
   return (
     <div>

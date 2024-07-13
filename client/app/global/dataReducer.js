@@ -25,5 +25,10 @@ export const dataReducer = (state,action) => {
    });
    return filterQuestions;
  }
+
+ //===================================
+ if (type === "userSearch") {
+   state.searchReasultFromGeneralUser = action.payload
+ }
  return state
 }
