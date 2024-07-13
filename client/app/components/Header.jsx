@@ -38,7 +38,7 @@ const Header = () => {
 
         <div className="hidden md:flex w-7/12 gap-10">
           <Logo w={100} />
-          <Search/>
+          {/* <Search/> */}
         </div>
         <div className="md:hidden block">
           <Logo w={60} />
