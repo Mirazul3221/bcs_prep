@@ -61,7 +61,7 @@ const Controller = ({
   const [search, setSearch] = useState("");
   const heyRobot = getRobot;
   //=======================================
-  const volumeSound = localStorage.getItem("volume");
+  // const volumeSound = localStorage.getItem("volume");
   // const correctVolume = new Audio(correct);
   //   const wrongVolume = new Audio(wrong);
   //=====================================
@@ -92,11 +92,12 @@ const Controller = ({
           currentTerget.classList.add("true");
           setCorrectMcq(correctMcq + 1);
           setSelectAll(selectAll + 1);
-          if (volumeSound === "on") {
-            // correctVolume.play();
+          // if (volumeSound === "on") {
+          //   // correctVolume.play();
+          // }
+          if(typeof window !== 'undefined'){
+            localStorage.setItem("crossBtn", "true");
           }
-
-          localStorage.setItem("crossBtn", "true");
           setPositiveMarks(positiveMarks + 1);
         } else {
           currentTerget.classList.add("false");
@@ -120,9 +121,12 @@ const Controller = ({
     const checkReadingQuestion = () => {
       // localStorage.setItem("")
       const uniqueId = singleQuestion._id;
-      const questionId = localStorage.getItem("UUID")
+      if(typeof window !== 'undefined'){
+        const questionId = localStorage.getItem("UUID")
         ? JSON.parse(localStorage.getItem("UUID"))
         : [];
+      }
+
       //Find ID from localstorage =================
 
       questionId.push(uniqueId);

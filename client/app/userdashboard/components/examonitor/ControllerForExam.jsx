@@ -32,7 +32,9 @@ const ControllerForExam = ({ getRobot, questionsData }) => {
   //Here is thatement about negitive and positive marks
   const [negitiveMarks, setNegitiveMarks] = useState(0);
   const [getNegitiveMarks, setGetNegitiveMarks] = useState(0);
-  localStorage.setItem("setJustifyBtn", "");
+  if(typeof window !== 'undefined'){
+    localStorage.setItem("setJustifyBtn", "");
+  }
   const [getBtn, setGetBtn] = useState(false);
   const [switcher, setSwitcher] = useState(false);
   const [disable, setDisable] = useState("");

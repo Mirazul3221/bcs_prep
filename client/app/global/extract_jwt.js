@@ -7,7 +7,9 @@ export const decode_token = (token) => {
       const exp = new Date(jwt_decoded.exp * 1001);
       console.log(exp)
       if (new Date() > exp) {
-        localStorage.removeItem("token");
+        if(typeof window !== 'undefined'){
+          localStorage.removeItem("token");
+        }
         return "";
       } else {
         return jwt_decoded;

@@ -45,12 +45,10 @@ const InputForm = () => {
       setTimeout(() => {
         setLoader(false);
       }, 10000);
-      // if(typeof window !== 'undefined'){
-      //   // now access your localStorage
+      if(typeof window !== 'undefined'){
+        localStorage.setItem("token", data.token);
 
-      // }
-
-      localStorage.setItem("token", data.token);
+      }
 
       dispatch({ type: "login_success", paylod: { token: data.token } });
       setTimeout(() => {

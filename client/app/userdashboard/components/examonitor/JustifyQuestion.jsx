@@ -75,7 +75,9 @@ const JustifyQuestion = ({
   //   GetValueFromPopup(setCross, setDisableSec);
   //set value in localstore
   //   localStorage.setItem("crossBtn", "true");
-  localStorage.setItem("disableBox", "");
+  if(typeof window !== 'undefined'){
+    localStorage.setItem("disableBox", "");
+  }
   //   console.log(localStorage.getItem("crossBtn"));
 //   const navigate = useNavigate();
   const handleClick = () => {

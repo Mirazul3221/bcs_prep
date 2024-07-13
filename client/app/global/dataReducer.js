@@ -9,7 +9,9 @@ export const dataReducer = (state,action) => {
  if (type == "logout") {
     state.userInfo = '',
     state.token = ''
-    localStorage.removeItem('token')
+    if(typeof window !== 'undefined'){
+      localStorage.removeItem('token')
+    }
  }
 
 //============================

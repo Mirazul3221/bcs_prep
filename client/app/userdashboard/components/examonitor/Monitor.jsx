@@ -22,12 +22,17 @@ const Monitor = ({ questions,megaQuestions,isSave }) => {
   const handleClick = () => {
     setVal(!val);
     setLocalData(!val);
-    localStorage.setItem("setrandom", localData);
+    if(typeof window !== 'undefined'){
+      localStorage.setItem("setrandom", localData);
+    }
+    
   };
 
   const handleClickForRobot = () => {
     setRandom(!random);
-    localStorage.setItem("robot", random ? "off" : "on");
+    if(typeof window !== 'undefined'){
+      localStorage.setItem("robot", random ? "off" : "on");
+    }
   };
 
 //  useEffect(() => {
