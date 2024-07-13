@@ -38,8 +38,8 @@ console.log(data)
          <div className="">
              {
               data.length > 0? <div className="">                  {
-                data?.map((singleQuestion)=>{
-                 return <h2>{singleQuestion.question}</h2>
+                data?.map((singleQuestion,i)=>{
+                 return <h2 key={i}>{singleQuestion.question}</h2>
                 })
               }</div> : "Question Not Found"
              }
