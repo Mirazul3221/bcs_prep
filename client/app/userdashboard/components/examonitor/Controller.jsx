@@ -18,7 +18,7 @@ import { baseurl } from "@/app/config";
 import storeContext from "@/app/global/createContex";
 import Image from "next/image";
 import { RiShareLine } from "react-icons/ri";
-import { usePathname } from "next/navigation";
+// import { usePathname } from "next/navigation";
 import {
   EmailShareButton,
   FacebookMessengerShareButton,
@@ -285,8 +285,8 @@ const Controller = ({
   } else {
     document.body.style.overflow = "auto";
   }
-  const pathname = usePathname();
-  console.log(pathname);
+  // const pathname = usePathname();
+  // console.log(pathname);
   const [copy,setCopy] = useState("copy")
   return (
     <div className={`pb-12 md:pb-0`}>
