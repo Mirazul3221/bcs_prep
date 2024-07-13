@@ -3,7 +3,7 @@ import Logo from "./Logo";
 import { FaBars } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
 import Link from "next/link";
-import Search from "./Search";
+// import Search from "./Search";
 const Header = () => {
   const [switcher, setSwitcher] = useState(false);
   const [switcher1, setSwitcher1] = useState(false);
